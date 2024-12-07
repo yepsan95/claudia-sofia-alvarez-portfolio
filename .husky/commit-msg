@@ -1,0 +1,45 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Define color variables
+GREEN='\033[0;32m'
+RED='\033[0;31m'
+CYAN='\033[0;36m'
+NC='\033[0m' # No color
+
+commit_msg_file=$1
+commit_message=$(cat "$commit_msg_file")
+
+if [ -z "$commit_message" ]; then
+    echo -e "\n${RED}ERROR: commit message cannot be empty.${NC}"
+    echo -e "\n${GREEN}Expected format: \"fix/feat: commit message [issue_number]\"${NC}\n"
+    echo -e "\n${CYAN}Examples:${NC}" >&2
+    echo -e "fix: correct bug in authentication flow [123]" >&2
+    echo -e "feat: add new user profile page [456]" >&2
+    exit 1
+fi
+
+# Use a regular expression to validate the commit message format
+commit_regex="^(fix|feat): [a-zA-Z0-9 ,'-]+ \[[0-9]+\]$"
+
+if ! echo "$commit_message" | grep -Eq "$commit_regex"; then
+    echo -e "\n${RED}ERROR: invalid commit message.${NC}"
+    echo -e "\n${GREEN}Expected format: \"fix/feat: commit message [issue_number]\"${NC}\n"
+    echo -e "\nCurrent message: ${RED}$commit_message${NC}" >&2
+    echo -e "\n${CYAN}Examples:${NC}" >&2
+    echo -e "fix: correct bug in authentication flow [123]" >&2
+    echo -e "feat: add new user profile page [456]" >&2
+    exit 1
+fi
+
+# Debugging: Output the message being checked for lowercase
+echo -e "\nDEBUG: Commit message being checked for lowercase:"
+echo "$commit_message"  # This will show if there are hidden spaces or special characters
+
+# Check if the commit message contains any uppercase letters
+if echo "$commit_message" | grep -q "[A-Z]"; then
+    echo -e "\n${RED}ERROR: commit message must be lowercase only.${NC}" >&2
+    echo -e "\nCurrent message: ${RED}$commit_message${NC}" >&2
+    echo -e "\nMake sure all the letters in your commit message are lowercase.\n" >&2
+    exit 1
+fi
