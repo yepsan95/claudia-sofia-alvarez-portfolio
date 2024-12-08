@@ -20,7 +20,7 @@ if [ -z "$commit_message" ]; then
 fi
 
 # Use a regular expression to validate the commit message format
-commit_regex="^(fix|feat): [a-zA-Z0-9 ,'-]+ \[[0-9]+\]$"
+commit_regex="^(fix|feat): [a-zA-Z0-9 ,'-.]+ \[[0-9]+\]$"
 
 if ! echo "$commit_message" | grep -Eq "$commit_regex"; then
     echo -e "\n${RED}ERROR: invalid commit message.${NC}"
