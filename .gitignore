@@ -26,4 +26,4 @@ package-lock.json
 # Compiled files
 dist
 dist-ssr
-output.css
+/src/output.css
