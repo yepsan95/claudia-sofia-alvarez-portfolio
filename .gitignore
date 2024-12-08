@@ -9,8 +9,6 @@ lerna-debug.log*
 
 # Node files
 node_modules
-dist
-dist-ssr
 *.local
 package-lock.json
 
@@ -24,3 +22,8 @@ package-lock.json
 *.njsproj
 *.sln
 *.sw?
+
+# Compiled files
+dist
+dist-ssr
+output.css
