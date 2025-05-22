@@ -1,4 +1,7 @@
 #!/usr/bin/env sh
+set -e
+trap 'echo "❌ Pre-commit hook failed at line $LINENO"; exit 1' ERR
+
 . "$(dirname -- "$0")/_/husky.sh"
 
 # Define color variables
@@ -10,24 +13,32 @@ NC='\033[0m' # No color
 echo -e "\n${GREEN}Running pre-commit hook${NC}"
 
 staged_files=$(git diff --name-only --cached --diff-filter=ACM)
-files_to_format=$(echo "$staged_files" | grep -E '\.(js|jsx|ts|tsx|vue|json)$')
-files_to_lint=$(echo "$staged_files" | grep -E '\.(js|jsx|ts|tsx|vue)$')
+files_to_format=$(echo "$staged_files" | grep -E '\.(js|jsx|ts|tsx|vue|json)$' || true)
+files_to_lint=$(echo "$staged_files" | grep -E '\.(js|jsx|ts|tsx|vue)$' || true)
 
-# Run prettier to format staged files
-echo -e "\n${CYAN}Running prettier on staged files${NC}"
-npm run format-staged $files_to_format
+if [ -n "$files_to_format" ]; then
+    # Run prettier to format staged files
+    echo -e "\n${CYAN}Running prettier on staged files${NC}"
+    npm run format-staged $files_to_format
 
-# Re-stage formatted files
-echo -e "\n${GREEN}Re-staging prettified files${NC}"
-git add -v $files_to_format
+    # Re-stage formatted files
+    echo -e "\n${GREEN}Re-staging prettified files${NC}"
+    git add -v $files_to_format
+else
+    echo -e "\n${GREEN}No staged files to format${NC}"
+fi
 
-# Run lint on staged files
-echo -e "\n${CYAN}Running lint-staged${NC}"
-npm run lint $files_to_lint
+if [ -n "$files_to_lint" ]; then
+    # Run lint on staged files
+    echo -e "\n${CYAN}Running lint-staged${NC}"
+    npm run lint $files_to_lint
 
-# Re-stage linted files
-echo -e "\n${GREEN}Re-staging linted files${NC}"
-git add -v $files_to_lint
+    # Re-stage linted files
+    echo -e "\n${GREEN}Re-staging linted files${NC}"
+    git add -v $files_to_lint
+else
+    echo -e "\n${GREEN}No staged files to lint${NC}"
+fi
 
 # Build project
 echo -e "\n${CYAN} Building project${NC}"
