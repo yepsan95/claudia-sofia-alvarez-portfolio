@@ -1,8 +1,6 @@
-#!/usr/bin/env sh
+#!/bin/bash
 set -e
 trap 'echo "❌ Pre-commit hook failed at line $LINENO"; exit 1' ERR
-
-. "$(dirname -- "$0")/_/husky.sh"
 
 # Define color variables
 RED='\033[0;31m'
@@ -20,7 +18,7 @@ files_to_lint=$(echo "$staged_files" | grep -E '\.(js|jsx|ts|tsx|vue)$' || true)
 if [ -n "$files_to_format" ]; then
     # Run prettier to format staged files
     echo -e "\n${CYAN}Running prettier on staged files${NC}"
-    npm run format-staged $files_to_format
+    pnpm format-staged $files_to_format
 
     # Re-stage formatted files
     echo -e "\n${GREEN}Re-staging prettified files${NC}"
@@ -32,7 +30,7 @@ fi
 if [ -n "$files_to_lint" ]; then
     # Run lint on staged files
     echo -e "\n${CYAN}Running lint-staged${NC}"
-    npm run lint $files_to_lint
+    pnpm lint $files_to_lint
 
     # Re-stage linted files
     echo -e "\n${GREEN}Re-staging linted files${NC}"
@@ -43,4 +41,4 @@ fi
 
 # Build project
 echo -e "\n${CYAN} Building project${NC}"
-npm run build
+pnpm build
