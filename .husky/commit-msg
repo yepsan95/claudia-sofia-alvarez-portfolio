@@ -2,8 +2,8 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 # Define color variables
-GREEN='\033[0;32m'
 RED='\033[0;31m'
+GREEN='\033[0;32m'
 CYAN='\033[0;36m'
 NC='\033[0m' # No color
 
@@ -24,8 +24,8 @@ commit_regex="^(fix|feat): [a-zA-Z0-9 ,'-.]+ \[[0-9]+\]$"
 
 if ! echo "$commit_message" | grep -Eq "$commit_regex"; then
     echo -e "\n${RED}ERROR: invalid commit message.${NC}"
-    echo -e "\n${GREEN}Expected format: \"fix/feat: commit message [issue_number]\"${NC}\n"
-    echo -e "\nCurrent message: ${RED}$commit_message${NC}" >&2
+    echo -e "\nExpected format:\n${GREEN}fix/feat: commit message [issue_number]${NC}"
+    echo -e "\nYour commit message:\n${RED}$commit_message${NC}" >&2
     echo -e "\n${CYAN}Examples:${NC}" >&2
     echo -e "fix: correct bug in authentication flow [123]" >&2
     echo -e "feat: add new user profile page [456]" >&2

@@ -5,6 +5,7 @@ trap 'echo "❌ Pre-commit hook failed at line $LINENO"; exit 1' ERR
 . "$(dirname -- "$0")/_/husky.sh"
 
 # Define color variables
+RED='\033[0;31m'
 GREEN='\033[0;32m'
 CYAN='\033[0;36m'
 NC='\033[0m' # No color
@@ -25,7 +26,7 @@ if [ -n "$files_to_format" ]; then
     echo -e "\n${GREEN}Re-staging prettified files${NC}"
     git add -v $files_to_format
 else
-    echo -e "\n${GREEN}No staged files to format${NC}"
+    echo -e "\n${RED}No staged files to format${NC}"
 fi
 
 if [ -n "$files_to_lint" ]; then
@@ -37,7 +38,7 @@ if [ -n "$files_to_lint" ]; then
     echo -e "\n${GREEN}Re-staging linted files${NC}"
     git add -v $files_to_lint
 else
-    echo -e "\n${GREEN}No staged files to lint${NC}"
+    echo -e "\n${RED}No staged files to lint${NC}"
 fi
 
 # Build project
