@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import HelloWorld from "./components/HelloWorld.vue";
-</script>
-
 <template>
   <div>
     <a href="https://vite.dev" target="_blank">
@@ -12,7 +8,13 @@ import HelloWorld from "./components/HelloWorld.vue";
     </a>
   </div>
   <HelloWorld msg="Vite + Vue" />
+  <base-timeline />
 </template>
+
+<script setup lang="ts">
+import HelloWorld from "./components/HelloWorld.vue";
+import BaseTimeline from "./components/BaseTimeline.vue";
+</script>
 
 <style scoped>
 .logo {
