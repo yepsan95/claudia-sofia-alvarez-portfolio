@@ -7,7 +7,7 @@
       title-class="flex items-center justify-center"
       :is-open="props.openCollapseState[element.title]"
     >
-      <slot :name="`content[${dataKey}]`">
+      <slot :name="`content[${element.title}]`">
         <div v-if="hasTwoLevels" class="space-y-1">
           <BaseCollapse
             v-for="(subContent, contentKey) in element.content"
@@ -35,7 +35,7 @@ import BaseCollapse from "./BaseCollapse.vue";
 type Collapse = {
   title: string;
   id: string;
-  content: [{ title: string; id: string; content: string }];
+  content?: [{ title: string; id: string; content: string }];
 };
 
 const props = defineProps({
