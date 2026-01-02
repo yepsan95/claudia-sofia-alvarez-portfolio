@@ -1,10 +1,10 @@
 <template>
-  <div class="grid grid-cols-[16rem_1fr] min-h-screen">
+  <div class="min-h-screen">
     <base-sidebar
       :options="sidebarOptions"
       @option-click="handleSidebarOptionClick"
     />
-    <main class="overflow-y-auto">
+    <main class="ml-64 overflow-y-auto">
       <div class="py-9 mt-6">
         <p class="flex justify-center text-3xl py-2">{{ props.title }}</p>
         <p class="flex justify-center text-center text-lg px-[100px] py-2">
@@ -15,6 +15,7 @@
         :data="accordionData"
         :open-collapse-state
         :has-two-levels="false"
+        ref="baseAccordionRef"
       >
         <template
           v-for="year in Object.keys(timelineData)"
@@ -40,7 +41,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { nextTick, ref } from "vue";
 import BaseSidebar from "./BaseSidebar.vue";
 import BaseAccordion from "./BaseAccordion.vue";
 import BaseWork from "./BaseWork.vue";
@@ -73,10 +74,34 @@ const accordionData = ref(
 );
 
 const openCollapseState = ref<{ [key: string]: boolean }>(
-  Object.fromEntries(sidebarOptions.map((option) => [option.id, false])),
+  Object.fromEntries(sidebarOptions.map((option) => [option.id, true])),
 );
 
-const handleSidebarOptionClick = (optionId: string) => {
+const baseAccordionRef = ref<InstanceType<typeof BaseAccordion> | null>(null);
+
+const handleSidebarOptionClick = async (optionId: string) => {
   openCollapseState.value[optionId] = true;
+  if (!baseAccordionRef.value) return;
+  const collapseRef = baseAccordionRef.value?.baseCollapseRefs[optionId].$el;
+  await scrollToCollapse(collapseRef);
+};
+
+const scrollToCollapse = async (el: HTMLElement) => {
+  if (!el) return;
+  await nextTick();
+  await new Promise(requestAnimationFrame);
+  await new Promise(requestAnimationFrame);
+
+  el.scrollIntoView({
+    behavior: "smooth",
+    block: "start",
+    inline: "nearest",
+  });
 };
 </script>
+
+<style>
+html {
+  overflow-anchor: none;
+}
+</style>

@@ -1,15 +1,19 @@
 <template>
   <div class="space-y-2">
-    <BaseCollapse
+    <base-collapse
       v-for="(element, dataKey) in props.data"
       :key="dataKey"
+      :ref="
+        (el) =>
+          setCollapseRef(element.id, el as InstanceType<typeof BaseCollapse>)
+      "
       :title="element.title"
       title-class="flex items-center justify-center"
       :is-open="props.openCollapseState[element.title]"
     >
       <slot :name="`content[${element.title}]`">
         <div v-if="hasTwoLevels" class="space-y-1">
-          <BaseCollapse
+          <base-collapse
             v-for="(subContent, contentKey) in element.content"
             :key="contentKey"
             :title="subContent.title"
@@ -19,17 +23,18 @@
                 {{ subContent.content }}
               </div>
             </slot>
-          </BaseCollapse>
+          </base-collapse>
         </div>
         <div v-else class="space-y-1">
           {{ element.content }}
         </div>
       </slot>
-    </BaseCollapse>
+    </base-collapse>
   </div>
 </template>
 
 <script setup lang="ts">
+import { nextTick, ref } from "vue";
 import BaseCollapse from "./BaseCollapse.vue";
 
 type Collapse = {
@@ -139,5 +144,21 @@ const props = defineProps({
       },
     ],
   },
+});
+
+const baseCollapseRefs = ref<Record<string, InstanceType<typeof BaseCollapse>>>(
+  {},
+);
+
+const setCollapseRef = async (
+  id: string,
+  el: InstanceType<typeof BaseCollapse>,
+) => {
+  await nextTick();
+  if (el) baseCollapseRefs.value[id] = el;
+};
+
+defineExpose({
+  baseCollapseRefs,
 });
 </script>

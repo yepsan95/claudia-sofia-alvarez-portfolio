@@ -1,5 +1,7 @@
 <template>
-  <aside class="h-screen w-64 bg-gray-800 text-white overflow-y-auto">
+  <aside
+    class="fixed top-6 left-0 h-[calc(105vh-4rem)] w-64 bg-gray-800 text-white overflow-y-auto z-10"
+  >
     <div class="p-4 border-b border-gray-700">
       <h2 class="text-xl font-semibold">{{ props.header }}</h2>
     </div>
@@ -8,11 +10,12 @@
       <a
         v-for="option in props.options"
         :key="option.id"
-        href="#"
-        class="block px-3 py-2 rounded hover:bg-gray-700"
+        class="block px-3 py-2 rounded hover:bg-gray-700 cursor-pointer"
         @click="handleOptionClick(option.id)"
       >
-        {{ option.label }}
+        <button type="button">
+          {{ option.label }}
+        </button>
       </a>
     </nav>
 
