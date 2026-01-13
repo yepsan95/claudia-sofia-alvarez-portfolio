@@ -1,6 +1,6 @@
 <template>
   <aside
-    class="fixed top-6 left-0 h-[calc(105vh-4rem)] w-64 bg-gray-800 text-white overflow-y-auto z-10"
+    class="fixed top-[70px] left-0 h-[calc(105vh-4rem)] w-64 bg-gray-800 text-white overflow-y-auto z-10"
   >
     <div class="p-4 border-b border-gray-700">
       <h2 class="text-xl font-semibold">{{ props.header }}</h2>

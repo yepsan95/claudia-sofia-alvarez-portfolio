@@ -3,6 +3,7 @@
     title="Beethoven's Works By Year"
     :subtitle="subtitle"
     :timeline-data="worksByYear"
+    :sidebar-header="sidebarHeader"
   />
 </template>
 
@@ -16,6 +17,8 @@ const subtitle = `
   transitioning Western art music from the Classical to the Romantic period. Despite experiencing deafness in his adult life, he continued to compose,
   creating some of his most celebrated pieces during this challenging time.
 `;
+
+const sidebarHeader = "Works By Year";
 </script>
 
 <style scoped></style>
