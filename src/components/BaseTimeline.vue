@@ -1,6 +1,7 @@
 <template>
   <div class="min-h-screen">
     <base-sidebar
+      :header="sidebarHeader"
       :options="sidebarOptions"
       @option-click="handleSidebarOptionClick"
     />
@@ -62,6 +63,11 @@ const props = defineProps({
     type: Object,
     required: false,
     default: () => ({}),
+  },
+  sidebarHeader: {
+    type: String,
+    required: false,
+    default: "My Sidebar",
   },
 });
 
