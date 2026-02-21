@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen">
+  <div class="min-h-screen mt-12">
     <base-sidebar
       :header="sidebarHeader"
       :options="sidebarOptions"
