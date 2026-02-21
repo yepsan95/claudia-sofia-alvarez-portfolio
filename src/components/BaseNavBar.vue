@@ -3,7 +3,7 @@
     class="fixed top-0 left-0 flex justify-between align-middle bg-gray-800 text-gray-50 w-full h-[70px] z-50"
   >
     <div class="flex items-center ml-4">
-      <span class="text-xl">
+      <span class="text-xl font-serif">
         {{ props.title }}
       </span>
     </div>
@@ -12,7 +12,7 @@
         v-for="option in props.options"
         :key="option.name"
         :to="option.to"
-        class="hover:bg-gray-600 px-4 py-4 rounded-lg"
+        class="hover:bg-gray-600 px-4 py-4 rounded-lg font-serif"
       >
         {{ option.label }}
       </router-link>
