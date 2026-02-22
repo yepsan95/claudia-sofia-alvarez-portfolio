@@ -9,7 +9,7 @@
 
 <script setup lang="ts">
 import BaseTimeline from "../components/BaseTimeline.vue";
-import worksByYear from "../data/beethovenWorks";
+import worksByYear from "../data/worksByYear.json" with { type: "json" };
 
 const subtitle = `
   Ludwig van Beethoven was a German composer and pianist from the Classical to Romantic eras,

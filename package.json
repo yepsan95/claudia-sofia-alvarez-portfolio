@@ -13,7 +13,8 @@
     "format": "prettier --write '**/*.{js,ts,vue,json}'",
     "format-staged": "prettier --write",
     "lint": "eslint . --fix --ignore-pattern dist .gitignore",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "generate:data": "node scripts/generateData.js"
   },
   "husky": {
     "hooks": {
@@ -39,7 +40,8 @@
     "tailwindcss": "^3.4.17",
     "typescript-eslint": "^8.32.1",
     "vite": "^6.3.5",
-    "vite-svg-loader": "^5.1.0"
+    "vite-svg-loader": "^5.1.0",
+    "xlsx": "^0.18.5"
   },
   "lint-staged": {
     "src/**/*.{js,ts,vue,html,css}": "prettier --write",
