@@ -24,6 +24,10 @@ pnpm-lock.yaml
 *.sln
 *.sw?
 
+# JSON files parsed from Google Drive
+src\data\data.json
+src\data\worksByYear.json
+
 # Compiled files
 dist
 dist-ssr
