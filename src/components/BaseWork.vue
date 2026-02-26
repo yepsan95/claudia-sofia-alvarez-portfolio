@@ -87,7 +87,7 @@ const props = defineProps({
 
 const formattedPremiereDate = computed(() => {
   if (!props.premiereDate) return "";
-  const date = new Date(props.premiereDate);
+  const date = new Date(props.premiereDate.split("T")[0]);
 
   const monthName = new Intl.DateTimeFormat("en-US", { month: "long" }).format(
     date,

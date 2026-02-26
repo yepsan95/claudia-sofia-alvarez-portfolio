@@ -24,9 +24,16 @@ const fetchFromGoogleDrive = async () => {
 
 const parseExcelToJson = async (buffer) => {
   console.log("📊 Parsing Excel...");
-  const workbook = XLSX.read(buffer, { type: "buffer" });
+  const workbook = XLSX.read(buffer, {
+    type: "buffer",
+    cellDates: true,
+  });
   const sheet = workbook.Sheets[workbook.SheetNames[0]];
-  const json = XLSX.utils.sheet_to_json(sheet, { defval: null });
+  const json = XLSX.utils.sheet_to_json(sheet, {
+    defval: null,
+    raw: true,
+    dateNF: "yyyy-mm-dd",
+  });
   return json;
 };
 
