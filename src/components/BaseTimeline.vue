@@ -34,6 +34,7 @@
             :publish-date="work.publishDate"
             :duration="work.duration"
             :video-url="work.videoUrl"
+            :embedded-video-url="work.embeddedVideoUrl"
           />
         </template>
       </base-accordion>

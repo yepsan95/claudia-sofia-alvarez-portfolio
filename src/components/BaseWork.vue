@@ -15,11 +15,17 @@
       <div v-if="premierePlace" class="flex justify-start text-left py-1">
         <p>{{ `Premiered at ${premierePlace} on ${formattedPremiereDate}` }}</p>
       </div>
-      <div class="flex justify-center py-5">
-        <iframe :src="videoUrl" width="320" height="180"></iframe>
+      <div v-if="embeddedVideoUrl" class="flex justify-center py-5">
+        <iframe :src="embeddedVideoUrl" width="320" height="180"></iframe>
       </div>
-      <div class="flex justify-center">
-        <a v-if="videoUrl" :href="videoUrl" class="mx-3">
+      <div class="flex justify-center mt-8">
+        <a
+          v-if="videoUrl"
+          :href="videoUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mx-3"
+        >
           <button
             type="button"
             class="border rounded-lg bg-gray-700 hover:bg-gray-500 text-gray-200 px-3 py-2"
@@ -27,7 +33,7 @@
             Video
           </button>
         </a>
-        <a :href="scoreUrl || ''" class="mx-3">
+        <a v-if="scoreUrl" :href="scoreUrl || ''" class="mx-3">
           <button
             type="button"
             class="border rounded-lg bg-gray-700 hover:bg-gray-500 text-gray-200 px-3 py-2"
@@ -76,6 +82,10 @@ const props = defineProps({
     required: true,
   },
   videoUrl: {
+    type: String,
+    required: false,
+  },
+  embeddedVideoUrl: {
     type: String,
     required: false,
   },
