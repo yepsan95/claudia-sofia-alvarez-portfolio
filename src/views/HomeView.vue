@@ -2,6 +2,9 @@
   <div class="relative flex justify-center mt-6 bg-black">
     <img src="../assets/photo.jpg" />
     <div
+      class="absolute inset-0 pointer-events-none bg-gradient-to-r from-black via-transparent to-black"
+    ></div>
+    <div
       class="absolute top-1/2 left-3/5 px-8 py-4 bg-gray-800 text-gray-100 font-serif translate-x-[30vw] -translate-y-[20vh]"
     >
       <p class="text-xl">
