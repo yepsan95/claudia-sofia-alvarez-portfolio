@@ -2,6 +2,7 @@
   <div class="min-h-screen mt-12">
     <base-sidebar
       :header="sidebarHeader"
+      :footer="sidebarFooter"
       :options="sidebarOptions"
       @option-click="handleSidebarOptionClick"
     />
@@ -17,6 +18,7 @@
         :open-collapse-state
         :has-two-levels="false"
         ref="baseAccordionRef"
+        @update:open-collapse-state="openCollapseState = $event"
       >
         <template
           v-for="year in Object.keys(timelineData)"
@@ -70,6 +72,11 @@ const props = defineProps({
     required: false,
     default: "My Sidebar",
   },
+  sidebarFooter: {
+    type: String,
+    required: false,
+    default: "© 2025 My App",
+  },
 });
 
 const sidebarOptions: { label: string; id: string }[] = Object.keys(
@@ -87,22 +94,31 @@ const openCollapseState = ref<{ [key: string]: boolean }>(
 const baseAccordionRef = ref<InstanceType<typeof BaseAccordion> | null>(null);
 
 const handleSidebarOptionClick = async (optionId: string) => {
-  openCollapseState.value[optionId] = true;
   if (!baseAccordionRef.value) return;
   const collapseRef = baseAccordionRef.value?.baseCollapseRefs[optionId].$el;
-  await scrollToCollapse(collapseRef);
+  openCollapseState.value[optionId] = true;
+
+  const offset = openCollapseState.value[optionId] ? -60 : 0;
+  await nextTick();
+  await new Promise(requestAnimationFrame);
+  await new Promise(requestAnimationFrame);
+  await new Promise((resolve) => setTimeout(resolve, 200));
+
+  await scrollToCollapse(collapseRef, offset);
 };
 
-const scrollToCollapse = async (el: HTMLElement) => {
+const scrollToCollapse = async (el: HTMLElement, offset: number) => {
   if (!el) return;
   await nextTick();
   await new Promise(requestAnimationFrame);
   await new Promise(requestAnimationFrame);
 
-  el.scrollIntoView({
+  const elementPosition = el.getBoundingClientRect().top + window.scrollY;
+  const offsetPosition = elementPosition + offset;
+
+  window.scrollTo({
+    top: offsetPosition,
     behavior: "smooth",
-    block: "start",
-    inline: "nearest",
   });
 };
 </script>
