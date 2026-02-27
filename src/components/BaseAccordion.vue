@@ -10,6 +10,7 @@
       :title="element.title"
       title-class="flex items-center justify-center"
       :is-open="props.openCollapseState[element.title]"
+      @update:is-open="(value) => handleCollapseToggle(element.title, value)"
     >
       <slot :name="`content[${element.title}]`">
         <div v-if="hasTwoLevels" class="space-y-1">
@@ -146,6 +147,10 @@ const props = defineProps({
   },
 });
 
+const emit = defineEmits<{
+  (e: "update:openCollapseState", value: Record<string, boolean>): void;
+}>();
+
 const baseCollapseRefs = ref<Record<string, InstanceType<typeof BaseCollapse>>>(
   {},
 );
@@ -156,6 +161,11 @@ const setCollapseRef = async (
 ) => {
   await nextTick();
   if (el) baseCollapseRefs.value[id] = el;
+};
+
+const handleCollapseToggle = (title: string, value: boolean) => {
+  const updatedState = { ...props.openCollapseState, [title]: value };
+  emit("update:openCollapseState", updatedState);
 };
 
 defineExpose({

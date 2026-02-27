@@ -4,6 +4,7 @@
     :subtitle="subtitle"
     :timeline-data="worksByYear"
     :sidebar-header="sidebarHeader"
+    :sidebar-footer="sidebarFooter"
   />
 </template>
 
@@ -21,6 +22,7 @@ const subtitle = `
 `;
 
 const sidebarHeader = "Works By Year";
+const sidebarFooter = "© 2026 Claudia Sofia Alvarez";
 </script>
 
 <style scoped></style>
