@@ -95,14 +95,15 @@ const baseAccordionRef = ref<InstanceType<typeof BaseAccordion> | null>(null);
 
 const handleSidebarOptionClick = async (optionId: string) => {
   if (!baseAccordionRef.value) return;
+  const previousCollapseState = openCollapseState.value[optionId];
   const collapseRef = baseAccordionRef.value?.baseCollapseRefs[optionId].$el;
   openCollapseState.value[optionId] = true;
 
   const offset = openCollapseState.value[optionId] ? -60 : 0;
-  await nextTick();
-  await new Promise(requestAnimationFrame);
-  await new Promise(requestAnimationFrame);
-  await new Promise((resolve) => setTimeout(resolve, 200));
+  if (!previousCollapseState) {
+    await nextTick();
+    await new Promise((resolve) => setTimeout(resolve, 200));
+  }
 
   await scrollToCollapse(collapseRef, offset);
 };
