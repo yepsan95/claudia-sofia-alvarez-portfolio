@@ -1,13 +1,15 @@
 <template>
-  <div class="relative flex justify-center mt-6 bg-black">
-    <img src="../assets/photo.jpg" />
+  <div
+    class="relative sm:flex md:flex block justify-center mt-6 bg-black overflow-hidden"
+  >
+    <img src="../assets/photo.jpg" class="max-w-2/3 min-w-0 object-cover" />
     <div
       class="absolute inset-0 pointer-events-none bg-gradient-to-r from-black via-transparent to-black"
     ></div>
     <div
-      class="absolute top-1/2 left-3/5 px-8 py-4 bg-gray-800 text-gray-100 font-serif translate-x-[30vw] -translate-y-[20vh]"
+      class="relative sm:absolute sm:max-w-[600px] lg:max-w-[400px] px-4 py-3 bg-gray-800/90 text-gray-100 font-serif bottom-4 left-auto right-auto sm:bottom-auto sm:left-auto sm:right-1/4 lg:bottom-auto lg:left-auto lg:right-1/7 sm:top-1/2 sm:px-8 sm:py-4 sm:translate-x-[10vw] sm:-translate-y-1/2 lg:translate-x-[20vw] lg:-translate-y-[20vh]"
     >
-      <p class="text-xl">
+      <p class="text-sm sm:text-base lg:text-xl text-center">
         "Lorem ipsum dolor sit amet,<br />
         consectetur adipiscing elit,<br />
         sed do eiusmod tempor incididunt<br />
@@ -19,12 +21,12 @@
     </div>
   </div>
   <div
-    class="flex justify-center h-[300px] text-gray-100 bg-gray-800 font-mono"
+    class="flex flex-col md:flex-row justify-center text-gray-100 bg-gray-800 font-mono px-6 py-8 gap-8 md:gap-16"
   >
-    <div class="px-4 py-4">
-      <div class="py-8">
+    <div>
+      <div class="py-4">
         <h1>Join The List</h1>
-        <input type="email" placeholder=" email address" />
+        <input type="email" placeholder=" email address" class="mt-1" />
       </div>
       <div class="py-3">
         <h1>Social Media</h1>
@@ -60,22 +62,22 @@
           </li>
         </ul>
       </div>
-      <div class="py-8">
+      <div class="py-6">
         © 2026 Claudia Sofia Alvarez. All rights reserved.
       </div>
     </div>
-    <div class="px-4 py-4">
-      <div class="py-6">
+    <div>
+      <div class="py-4">
         <h1>General Inquires</h1>
-        <a class="underline">info@claudiasofialvarez.com</a>
+        <a class="underline break-all">info@claudiasofialvarez.com</a>
       </div>
-      <div class="py-6">
+      <div class="py-4">
         <h1>Press Inquires</h1>
-        <a class="underline">press@claudiasofialvarez.com</a>
+        <a class="underline break-all">press@claudiasofialvarez.com</a>
       </div>
-      <div class="py-6">
+      <div class="py-4">
         <h1>Publisher</h1>
-        <a class="underline">rental@claudiasofialvarez.com</a>
+        <a class="underline break-all">rental@claudiasofialvarez.com</a>
       </div>
     </div>
   </div>
