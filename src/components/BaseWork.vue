@@ -1,18 +1,36 @@
 <template>
   <div class="flex justify-center px-4 sm:px-6 lg:px-8">
-    <div class="my-4 w-full max-w-4xl border px-5 py-6 sm:my-5 sm:px-8 sm:py-8">
+    <article
+      class="my-4 w-full max-w-4xl border border-[var(--border-soft)] bg-[rgba(248,244,237,0.88)] px-5 py-6 shadow-[var(--shadow-soft)] sm:my-5 sm:px-8 sm:py-8"
+    >
       <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 text-left">
-        <p class="text-2xl leading-tight">{{ title }}</p>
-        <p class="italic">{{ `(${year})` }}</p>
-        <p v-if="duration">{{ duration }}</p>
+        <p
+          class="font-display text-[2rem] leading-[0.98] text-[var(--text-primary-light)]"
+        >
+          {{ title }}
+        </p>
+        <p class="font-[var(--font-mono)] text-sm text-[var(--color-plum)]">
+          {{ `(${year})` }}
+        </p>
+        <p
+          v-if="duration"
+          class="font-[var(--font-mono)] text-xs uppercase tracking-[0.14em] text-[var(--text-secondary-light)]"
+        >
+          {{ duration }}
+        </p>
       </div>
-      <div class="flex justify-start py-1 text-left">
+      <div class="flex justify-start py-2 text-left">
         <p>{{ `for ${formattedInstrumentation}` }}</p>
       </div>
-      <div class="flex justify-start py-1 text-left">
+      <div
+        class="flex justify-start py-2 text-left text-[var(--text-secondary-light)]"
+      >
         <p>{{ description }}</p>
       </div>
-      <div v-if="premierePlace" class="flex justify-start py-1 text-left">
+      <div
+        v-if="premierePlace"
+        class="flex justify-start py-2 text-left text-[var(--text-secondary-light)]"
+      >
         <p>{{ `Premiered at ${premierePlace} on ${formattedPremiereDate}` }}</p>
       </div>
       <div v-if="embeddedVideoUrl" class="flex justify-center py-5">
@@ -31,7 +49,7 @@
         >
           <button
             type="button"
-            class="border rounded-lg bg-gray-700 hover:bg-gray-500 text-gray-200 px-3 py-2"
+            class="button-primary rounded-sm px-4 py-2 text-sm"
           >
             Video
           </button>
@@ -39,13 +57,13 @@
         <a v-if="scoreUrl" :href="scoreUrl || ''">
           <button
             type="button"
-            class="border rounded-lg bg-gray-700 hover:bg-gray-500 text-gray-200 px-3 py-2"
+            class="button-secondary rounded-sm px-4 py-2 text-sm"
           >
             Purchase score
           </button>
         </a>
       </div>
-    </div>
+    </article>
   </div>
 </template>
 
