@@ -1,6 +1,8 @@
 <template>
   <aside
-    class="fixed top-[70px] left-0 h-[calc(105vh-4rem)] w-64 bg-gray-800 text-white overflow-y-auto z-10"
+    id="timeline-sidebar"
+    class="fixed top-[70px] left-0 h-[calc(100vh-70px)] w-64 bg-gray-800 text-white overflow-y-auto z-10 transition-transform duration-300"
+    :class="props.isOpen ? 'translate-x-0' : '-translate-x-full'"
   >
     <div class="p-4 border-b border-gray-700">
       <h2 class="text-xl font-semibold">{{ props.header }}</h2>
@@ -80,6 +82,11 @@ const props = defineProps({
     type: String,
     required: false,
     default: "© 2025 My App",
+  },
+  isOpen: {
+    type: Boolean,
+    required: false,
+    default: true,
   },
 });
 const emit = defineEmits<{

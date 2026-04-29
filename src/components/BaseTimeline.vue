@@ -1,12 +1,26 @@
 <template>
   <div class="min-h-screen mt-12">
     <base-sidebar
+      :is-open="isSidebarOpen"
       :header="sidebarHeader"
       :footer="sidebarFooter"
       :options="sidebarOptions"
       @option-click="handleSidebarOptionClick"
     />
-    <main class="ml-64 overflow-y-auto">
+    <button
+      type="button"
+      class="fixed top-[86px] z-20 rounded-full border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-800 shadow-sm transition-all duration-300 hover:bg-gray-100"
+      :class="isSidebarOpen ? 'left-[272px]' : 'left-4'"
+      :aria-expanded="isSidebarOpen"
+      :aria-controls="sidebarId"
+      @click="toggleSidebar"
+    >
+      {{ isSidebarOpen ? "Hide years" : "Show years" }}
+    </button>
+    <main
+      class="overflow-y-auto transition-[margin] duration-300"
+      :class="isSidebarOpen ? 'ml-64' : 'ml-0'"
+    >
       <div class="py-9 mt-6">
         <p class="flex justify-center text-3xl py-2">{{ props.title }}</p>
         <p class="flex justify-center text-center text-lg px-[100px] py-2">
@@ -116,6 +130,8 @@ const props = defineProps({
 const selectedFilters = ref<string[]>([]);
 const openCollapseState = ref<{ [key: string]: boolean }>({});
 const baseAccordionRef = ref<InstanceType<typeof BaseAccordion> | null>(null);
+const isSidebarOpen = ref(true);
+const sidebarId = "timeline-sidebar";
 
 const matchesSelectedFilters = (work: TimelineWork) => {
   if (!selectedFilters.value.length) return true;
@@ -177,6 +193,10 @@ const handleSidebarOptionClick = async (optionId: string) => {
   }
 
   await scrollToCollapse(collapseRef, offset);
+};
+
+const toggleSidebar = () => {
+  isSidebarOpen.value = !isSidebarOpen.value;
 };
 
 const scrollToCollapse = async (el: HTMLElement, offset: number) => {
