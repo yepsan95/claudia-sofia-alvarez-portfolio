@@ -1,30 +1,33 @@
 <template>
-  <div class="flex justify-center">
-    <div class="w-[800px] py-8 px-10 mx-2 my-5 border">
-      <div class="flex justify-start">
-        <p class="text-xl inline-block">{{ title }}</p>
-        <p class="italic inline-block px-3">{{ `(${year})` }}</p>
-        <p class="inline-block px-2">{{ duration }}</p>
+  <div class="flex justify-center px-4 sm:px-6 lg:px-8">
+    <div class="my-4 w-full max-w-4xl border px-5 py-6 sm:my-5 sm:px-8 sm:py-8">
+      <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 text-left">
+        <p class="text-2xl leading-tight">{{ title }}</p>
+        <p class="italic">{{ `(${year})` }}</p>
+        <p v-if="duration">{{ duration }}</p>
       </div>
-      <div class="flex justify-start text-left py-1">
+      <div class="flex justify-start py-1 text-left">
         <p>{{ `for ${formattedInstrumentation}` }}</p>
       </div>
-      <div class="flex justify-start text-left py-1">
+      <div class="flex justify-start py-1 text-left">
         <p>{{ description }}</p>
       </div>
-      <div v-if="premierePlace" class="flex justify-start text-left py-1">
+      <div v-if="premierePlace" class="flex justify-start py-1 text-left">
         <p>{{ `Premiered at ${premierePlace} on ${formattedPremiereDate}` }}</p>
       </div>
       <div v-if="embeddedVideoUrl" class="flex justify-center py-5">
-        <iframe :src="embeddedVideoUrl" width="320" height="180"></iframe>
+        <iframe
+          :src="embeddedVideoUrl"
+          class="aspect-video w-full max-w-xl"
+          title="Embedded performance video"
+        />
       </div>
-      <div class="flex justify-center mt-8">
+      <div class="mt-8 flex flex-wrap justify-center gap-3">
         <a
           v-if="videoUrl"
           :href="videoUrl"
           target="_blank"
           rel="noopener noreferrer"
-          class="mx-3"
         >
           <button
             type="button"
@@ -33,7 +36,7 @@
             Video
           </button>
         </a>
-        <a v-if="scoreUrl" :href="scoreUrl || ''" class="mx-3">
+        <a v-if="scoreUrl" :href="scoreUrl || ''">
           <button
             type="button"
             class="border rounded-lg bg-gray-700 hover:bg-gray-500 text-gray-200 px-3 py-2"
