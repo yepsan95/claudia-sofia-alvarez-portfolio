@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen pt-16 md:pt-[70px]">
+  <div class="surface-paper min-h-screen pt-16 md:pt-[70px]">
     <div
       v-if="showSidebarBackdrop"
       class="fixed inset-0 z-10 bg-slate-950/35 lg:hidden"
@@ -15,7 +15,7 @@
     />
     <button
       type="button"
-      class="fixed z-20 rounded-full border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-800 shadow-sm transition-all duration-300 hover:bg-gray-100"
+      class="button-secondary fixed z-20 rounded-full px-4 py-2 text-sm transition-all duration-300"
       :class="toggleButtonClass"
       :aria-expanded="isSidebarOpen"
       :aria-controls="sidebarId"
@@ -28,11 +28,16 @@
       :class="mainContentClass"
     >
       <div class="mx-auto max-w-6xl px-4 pb-8 pt-20 sm:px-6 lg:px-10">
-        <p class="py-2 text-center text-3xl leading-tight sm:text-4xl">
+        <p class="section-label text-center text-[var(--color-plum)]">
+          Catalogue of Works
+        </p>
+        <p
+          class="mx-auto max-w-4xl py-3 text-center font-display text-[2.7rem] leading-[0.95] text-[var(--text-primary-light)] sm:text-[4rem]"
+        >
           {{ props.title }}
         </p>
         <p
-          class="mx-auto max-w-4xl py-2 text-center text-base leading-8 text-gray-800 sm:text-lg sm:leading-9"
+          class="mx-auto max-w-3xl py-2 text-center text-base leading-8 text-[var(--text-secondary-light)] sm:text-lg sm:leading-9"
         >
           {{ props.subtitle }}
         </p>

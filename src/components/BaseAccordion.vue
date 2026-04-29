@@ -1,5 +1,5 @@
 <template>
-  <div class="space-y-2">
+  <div class="space-y-3">
     <base-collapse
       v-for="(element, dataKey) in props.data"
       :key="dataKey"
