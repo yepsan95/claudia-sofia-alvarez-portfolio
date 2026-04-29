@@ -1,27 +1,34 @@
 <template>
   <aside
     id="timeline-sidebar"
-    class="fixed left-0 z-20 h-[calc(100vh-4rem)] w-[min(18rem,85vw)] overflow-y-auto bg-gray-800 text-white transition-transform duration-300 md:top-[70px] md:h-[calc(100vh-70px)] lg:w-64"
+    class="fixed left-0 z-20 h-[calc(100vh-4rem)] w-[min(18rem,85vw)] overflow-y-auto border-r border-[rgba(201,192,181,0.08)] bg-[linear-gradient(180deg,#202735_0%,#1a202b_100%)] text-[var(--text-primary-dark)] transition-transform duration-300 md:top-[70px] md:h-[calc(100vh-70px)] lg:w-64"
     :class="sidebarStateClass"
   >
-    <div class="p-4 border-b border-gray-700">
-      <h2 class="text-xl font-semibold">{{ props.header }}</h2>
+    <div class="border-b border-[rgba(201,192,181,0.1)] px-5 py-5">
+      <p class="section-label text-[var(--color-gold)]">Archive</p>
+      <h2 class="mt-2 font-display text-[2rem] leading-none">
+        {{ props.header }}
+      </h2>
     </div>
 
-    <nav class="p-4 space-y-2">
-      <a
+    <nav class="px-3 py-4">
+      <button
         v-for="option in props.options"
         :key="option.id"
-        class="block px-3 py-2 rounded hover:bg-gray-700 cursor-pointer"
+        type="button"
+        class="group flex w-full items-center gap-3 rounded-sm px-3 py-3 text-left font-[var(--font-mono)] text-sm tracking-[0.08em] text-[var(--text-secondary-dark)] transition-colors duration-300 hover:text-[var(--color-gold)]"
         @click="handleOptionClick(option.id)"
       >
-        <button type="button">
-          {{ option.label }}
-        </button>
-      </a>
+        <span
+          class="h-px w-4 bg-[rgba(201,192,181,0.15)] transition-all duration-300 group-hover:w-6 group-hover:bg-[var(--color-gold)]"
+        />
+        <span>{{ option.label }}</span>
+      </button>
     </nav>
 
-    <footer class="p-4 border-t border-gray-700 text-sm text-gray-400">
+    <footer
+      class="mt-auto border-t border-[rgba(201,192,181,0.1)] px-5 py-4 text-xs text-[var(--text-secondary-dark)]"
+    >
       {{ props.footer }}
     </footer>
   </aside>

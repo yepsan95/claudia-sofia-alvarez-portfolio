@@ -1,12 +1,12 @@
 <template>
-  <Disclosure as="div" class="mx-auto w-full rounded-2xl bg-white py-2">
+  <Disclosure as="div" class="mx-auto w-full bg-transparent py-3">
     <DisclosureButton
       @click="toggleOpen"
-      class="relative flex w-full items-center justify-center rounded-lg px-4 py-2 text-center text-sm font-medium text-black focus:outline-none before:absolute before:left-0 before:top-1/2 before:w-full before:border-t before:border-gray-500 before:-translate-y-1/2 before:content-['']"
+      class="score-rule relative flex w-full items-center justify-center px-4 py-3 text-center focus:outline-none"
     >
       <slot name="title">
         <span
-          class="relative z-10 border rounded-xl border-gray-600 bg-white px-3 py-1"
+          class="section-label relative z-10 rounded-full border border-[rgba(181,154,92,0.72)] bg-[var(--color-paper)] px-4 py-2 text-[var(--text-primary-light)] shadow-[0_8px_24px_rgba(22,24,29,0.08)]"
           :class="titleClass"
         >
           {{ title }}
@@ -25,7 +25,9 @@
       <DisclosurePanel v-if="localOpen" static>
         <div class="w-full text-center center-slot">
           <slot>
-            <div class="inline-block text-sm text-gray-500">
+            <div
+              class="inline-block text-sm text-[var(--text-secondary-light)]"
+            >
               {{ content }}
             </div>
           </slot>
@@ -92,7 +94,8 @@ const beforeEnter = (el: Element) => {
 const enter = (el: Element) => {
   const e = el as HTMLElement;
   const height = e.scrollHeight;
-  e.style.transition = "height 300ms ease, opacity 300ms ease";
+  e.style.transition =
+    "height 320ms cubic-bezier(0.22, 1, 0.36, 1), opacity 320ms cubic-bezier(0.22, 1, 0.36, 1)";
   e.style.height = height + "px";
   e.style.opacity = "1";
 };
@@ -110,7 +113,8 @@ const beforeLeave = (el: Element) => {
 const leave = (el: Element) => {
   const e = el as HTMLElement;
   void e.offsetHeight;
-  e.style.transition = "height 300ms ease, opacity 300ms ease";
+  e.style.transition =
+    "height 320ms cubic-bezier(0.22, 1, 0.36, 1), opacity 320ms cubic-bezier(0.22, 1, 0.36, 1)";
   e.style.height = "0";
   e.style.opacity = "0";
 };
