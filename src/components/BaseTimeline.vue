@@ -1,7 +1,13 @@
 <template>
-  <div class="min-h-screen mt-12">
+  <div class="min-h-screen pt-16 md:pt-[70px]">
+    <div
+      v-if="showSidebarBackdrop"
+      class="fixed inset-0 z-10 bg-slate-950/35 lg:hidden"
+      @click="closeSidebar"
+    />
     <base-sidebar
       :is-open="isSidebarOpen"
+      :is-desktop="isDesktop"
       :header="sidebarHeader"
       :footer="sidebarFooter"
       :options="sidebarOptions"
@@ -9,8 +15,8 @@
     />
     <button
       type="button"
-      class="fixed top-[86px] z-20 rounded-full border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-800 shadow-sm transition-all duration-300 hover:bg-gray-100"
-      :class="isSidebarOpen ? 'left-[272px]' : 'left-4'"
+      class="fixed z-20 rounded-full border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-800 shadow-sm transition-all duration-300 hover:bg-gray-100"
+      :class="toggleButtonClass"
       :aria-expanded="isSidebarOpen"
       :aria-controls="sidebarId"
       @click="toggleSidebar"
@@ -19,21 +25,26 @@
     </button>
     <main
       class="overflow-y-auto transition-[margin] duration-300"
-      :class="isSidebarOpen ? 'ml-64' : 'ml-0'"
+      :class="mainContentClass"
     >
-      <div class="py-9 mt-6">
-        <p class="flex justify-center text-3xl py-2">{{ props.title }}</p>
-        <p class="flex justify-center text-center text-lg px-[100px] py-2">
+      <div class="mx-auto max-w-6xl px-4 pb-8 pt-20 sm:px-6 lg:px-10">
+        <p class="py-2 text-center text-3xl leading-tight sm:text-4xl">
+          {{ props.title }}
+        </p>
+        <p
+          class="mx-auto max-w-4xl py-2 text-center text-base leading-8 text-gray-800 sm:text-lg sm:leading-9"
+        >
           {{ props.subtitle }}
         </p>
       </div>
       <div
         v-if="props.filterOptions.length"
-        class="flex justify-center px-10 pb-6"
+        class="mx-auto flex max-w-6xl justify-center px-4 pb-6 sm:px-6 lg:px-10"
       >
         <base-filter v-model="selectedFilters" :options="props.filterOptions" />
       </div>
       <base-accordion
+        class="pb-10"
         :data="accordionData"
         :open-collapse-state="openCollapseState"
         :has-two-levels="false"
@@ -66,7 +77,14 @@
 </template>
 
 <script setup lang="ts">
-import { computed, nextTick, ref, watch } from "vue";
+import {
+  computed,
+  nextTick,
+  onBeforeUnmount,
+  onMounted,
+  ref,
+  watch,
+} from "vue";
 import type { PropType } from "vue";
 import BaseAccordion from "./BaseAccordion.vue";
 import BaseFilter from "./BaseFilter.vue";
@@ -130,8 +148,19 @@ const props = defineProps({
 const selectedFilters = ref<string[]>([]);
 const openCollapseState = ref<{ [key: string]: boolean }>({});
 const baseAccordionRef = ref<InstanceType<typeof BaseAccordion> | null>(null);
-const isSidebarOpen = ref(true);
+const isSidebarOpen = ref(false);
+const isDesktop = ref(false);
 const sidebarId = "timeline-sidebar";
+
+const updateViewportState = () => {
+  const desktop = window.innerWidth >= 1024;
+  const breakpointChanged = desktop !== isDesktop.value;
+  isDesktop.value = desktop;
+
+  if (breakpointChanged) {
+    isSidebarOpen.value = desktop;
+  }
+};
 
 const matchesSelectedFilters = (work: TimelineWork) => {
   if (!selectedFilters.value.length) return true;
@@ -166,6 +195,20 @@ const accordionData = computed(() =>
   })),
 );
 
+const mainContentClass = computed(() =>
+  isDesktop.value && isSidebarOpen.value ? "lg:ml-64" : "ml-0",
+);
+
+const toggleButtonClass = computed(() =>
+  isDesktop.value && isSidebarOpen.value
+    ? "left-[272px] top-[86px]"
+    : "left-4 top-20 md:top-[86px]",
+);
+
+const showSidebarBackdrop = computed(
+  () => !isDesktop.value && isSidebarOpen.value,
+);
+
 watch(
   sidebarOptions,
   (options) => {
@@ -180,6 +223,15 @@ watch(
   { immediate: true },
 );
 
+onMounted(() => {
+  updateViewportState();
+  window.addEventListener("resize", updateViewportState);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener("resize", updateViewportState);
+});
+
 const handleSidebarOptionClick = async (optionId: string) => {
   if (!baseAccordionRef.value) return;
   const previousCollapseState = openCollapseState.value[optionId];
@@ -193,10 +245,18 @@ const handleSidebarOptionClick = async (optionId: string) => {
   }
 
   await scrollToCollapse(collapseRef, offset);
+
+  if (!isDesktop.value) {
+    isSidebarOpen.value = false;
+  }
 };
 
 const toggleSidebar = () => {
   isSidebarOpen.value = !isSidebarOpen.value;
+};
+
+const closeSidebar = () => {
+  isSidebarOpen.value = false;
 };
 
 const scrollToCollapse = async (el: HTMLElement, offset: number) => {
