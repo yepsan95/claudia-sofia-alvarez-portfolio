@@ -1,7 +1,4 @@
-import data from "../src/data/data.json" with { type: "json" };
-
-const generateWorksByYearData = () => {
-  console.log(data);
+const generateWorksByYearData = (data) => {
   const worksByYear = {};
   data.forEach((work) => {
     if (work.year) {
