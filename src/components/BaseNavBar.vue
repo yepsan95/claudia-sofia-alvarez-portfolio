@@ -5,10 +5,10 @@
     <div
       class="mx-auto flex min-h-16 w-full max-w-[90rem] items-center justify-between gap-4 px-4 py-3 md:min-h-[70px] md:px-6 xl:px-10"
     >
-      <div class="flex min-w-0 items-center">
+      <div class="flex min-w-0 flex-1 items-center">
         <router-link
           to="/"
-          class="font-display text-[2rem] leading-none tracking-[0.02em] text-[var(--text-primary-dark)] transition-colors duration-300 hover:text-[var(--color-gold)] md:text-[2.6rem]"
+          class="block max-w-full overflow-hidden text-ellipsis whitespace-nowrap font-display text-[1.72rem] leading-none tracking-[0.01em] text-[var(--text-primary-dark)] transition-colors duration-300 hover:text-[var(--color-gold)] max-[360px]:text-[1.48rem] md:text-[2.15rem] lg:text-[2rem] xl:text-[2.35rem] 2xl:text-[2.6rem]"
           @click="isMenuOpen = false"
         >
           {{ props.title }}
@@ -16,7 +16,7 @@
       </div>
       <button
         type="button"
-        class="section-label inline-flex items-center rounded-sm border border-[rgba(201,192,181,0.22)] px-3 py-2 text-[var(--text-primary-dark)] transition-colors duration-300 hover:border-[rgba(181,154,92,0.72)] hover:text-[var(--color-gold)] focus:outline-none focus:ring-2 focus:ring-[rgba(181,154,92,0.35)] lg:hidden"
+        class="section-label inline-flex shrink-0 items-center rounded-sm border border-[rgba(201,192,181,0.22)] px-3 py-2 text-[var(--text-primary-dark)] transition-colors duration-300 hover:border-[rgba(181,154,92,0.72)] hover:text-[var(--color-gold)] focus:outline-none focus:ring-2 focus:ring-[rgba(181,154,92,0.35)] lg:hidden"
         :aria-expanded="isMenuOpen"
         aria-controls="site-nav-links"
         @click="toggleMenu"
