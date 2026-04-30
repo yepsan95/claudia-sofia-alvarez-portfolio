@@ -8,7 +8,7 @@
 <script setup lang="ts">
 import BaseNavBar from "./components/BaseNavBar.vue";
 
-const navBarTitle = "Claudia Sofia Alvarez";
+const navBarTitle = "Claudia Sofía Alvarez";
 const navBarOptions = [
   { name: "about", label: "About", to: "/" },
   { name: "biography", label: "Biography", to: "/biography" },

@@ -62,9 +62,7 @@
           </li>
         </ul>
       </div>
-      <div class="py-6">
-        © 2026 Claudia Sofia Alvarez. All rights reserved.
-      </div>
+      <div class="py-6">© 2026 Claudia Sofía Alvarez. All rights reserved.</div>
     </div>
     <div>
       <div class="py-4">
