@@ -90,7 +90,9 @@ jobs:
 
       - name: Combine all builds into one Pages site
         run: |
-          mkdir -p published-site/design-proposal-1
+          mkdir -p published-site/design-proposal
+          mkdir -p published-site/design-proposal/1
+          mkdir -p published-site/design-proposal/2
 
           cp -a current/dist/. published-site/
           cp -a proposal1/dist/. published-site/design-proposal/1/
