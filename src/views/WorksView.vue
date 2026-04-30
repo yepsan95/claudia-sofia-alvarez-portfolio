@@ -1,6 +1,6 @@
 <template>
   <base-timeline
-    title="Claudia Sofia Alvarez' Works By Year"
+    title="Claudia Sofía Alvarez' Works By Year"
     :subtitle="subtitle"
     :timeline-data="worksByYear"
     :filter-options="filterOptions"
@@ -15,7 +15,7 @@ import worksByYear from "../data/worksByYear.json" with { type: "json" };
 import data from "../data/data.json" with { type: "json" };
 
 const subtitle = `
-  Claudia Sofia Alvarez is a Peruvian composer Lorem ipsum dolor sit amet,
+  Claudia Sofía Alvarez is a Peruvian composer Lorem ipsum dolor sit amet,
   consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
   dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
   laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
@@ -40,7 +40,7 @@ const filterOptions = categories.map((category) => ({
   label: category.charAt(0).toUpperCase() + category.slice(1),
 }));
 
-const sidebarFooter = "© 2026 Claudia Sofia Alvarez";
+const sidebarFooter = "© 2026 Claudia Sofía Alvarez";
 </script>
 
 <style scoped></style>

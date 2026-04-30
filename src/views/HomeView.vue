@@ -12,7 +12,7 @@
         >
           <img
             src="../assets/photo.jpg"
-            alt="Portrait of Claudia Sofia Alvarez"
+            alt="Portrait of Claudia Sofía Alvarez"
             class="h-full min-h-[28rem] w-full object-cover object-center"
           />
           <div
@@ -25,7 +25,7 @@
             <h1
               class="mt-3 max-w-[14ch] font-display text-[2.6rem] leading-[0.92] text-[var(--text-primary-light)] sm:text-[3.3rem] lg:text-[4.3rem]"
             >
-              Claudia Sofia Alvarez
+              Claudia Sofía Alvarez
             </h1>
             <div class="mt-6 flex items-start gap-4 sm:gap-5">
               <div class="mt-1 h-32 w-px shrink-0 bg-[var(--color-gold)]" />
@@ -101,7 +101,7 @@
             </ul>
           </div>
           <p class="section-label text-[var(--text-secondary-dark)]">
-            © 2026 Claudia Sofia Alvarez. All rights reserved.
+            © 2026 Claudia Sofía Alvarez. All rights reserved.
           </p>
         </div>
         <div
