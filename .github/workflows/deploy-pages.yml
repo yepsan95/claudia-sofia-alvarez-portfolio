@@ -47,6 +47,10 @@ jobs:
         working-directory: current
         run: pnpm install --frozen-lockfile
 
+      - name: Generate data for current app
+        working-directory: current
+        run: pnpm generate:data
+
       - name: Build current app
         working-directory: current
         run: VITE_BASE="/my-project-name/" pnpm build
@@ -54,6 +58,10 @@ jobs:
       - name: Install dependencies for design proposal
         working-directory: proposal
         run: pnpm install --frozen-lockfile
+
+      - name: Generate data for design proposal
+        working-directory: proposal
+        run: pnpm generate:data
 
       - name: Build design proposal
         working-directory: proposal
