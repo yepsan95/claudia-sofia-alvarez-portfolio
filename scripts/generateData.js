@@ -12,7 +12,7 @@ const generateData = async () => {
   const json = await parseExcelToJson(buffer);
   writeJsonFile(json, "./src/data/data.json");
   console.log("✅ Done! JSON generated successfully.");
-  const worksByYear = generateWorksByYearData();
+  const worksByYear = generateWorksByYearData(json);
   writeJsonFile(worksByYear, "./src/data/worksByYear.json");
 };
 
