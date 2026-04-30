@@ -5,6 +5,7 @@ on:
     branches:
       - master
       - design-proposal-1
+      - design-proposal-2
   workflow_dispatch:
 
 permissions:
@@ -29,11 +30,17 @@ jobs:
           ref: master
           path: current
 
-      - name: Checkout design proposal branch
+      - name: Checkout design proposal 1 branch
         uses: actions/checkout@v6
         with:
           ref: design-proposal-1
-          path: proposal
+          path: proposal1
+
+      - name: Checkout design proposal 2 branch
+        uses: actions/checkout@v6
+        with:
+          ref: design-proposal-2
+          path: proposal2
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v6
@@ -57,24 +64,37 @@ jobs:
         working-directory: current
         run: VITE_BASE="/${REPO_NAME}/" pnpm build
 
-      - name: Install dependencies for design proposal
-        working-directory: proposal
+      - name: Install dependencies for design proposal 1
+        working-directory: proposal1
         run: pnpm install --frozen-lockfile
 
-      - name: Generate data for design proposal
-        working-directory: proposal
+      - name: Generate data for design proposal 1
+        working-directory: proposal1
         run: pnpm generate:data
 
-      - name: Build design proposal
-        working-directory: proposal
-        run: VITE_BASE="/${REPO_NAME}/design-proposal-1/" pnpm build
+      - name: Build design proposal 1
+        working-directory: proposal1
+        run: VITE_BASE="/${REPO_NAME}/design-proposal/1" pnpm build
 
-      - name: Combine both builds into one Pages site
+      - name: Install dependencies for design proposal 2
+        working-directory: proposal2
+        run: pnpm install --frozen-lockfile
+
+      - name: Generate data for design proposal 2
+        working-directory: proposal2
+        run: pnpm generate:data
+
+      - name: Build design proposal 2
+        working-directory: proposal2
+        run: VITE_BASE="/${REPO_NAME}/design-proposal/2" pnpm build
+
+      - name: Combine all builds into one Pages site
         run: |
           mkdir -p published-site/design-proposal-1
 
           cp -a current/dist/. published-site/
-          cp -a proposal/dist/. published-site/design-proposal-1/
+          cp -a proposal1/dist/. published-site/design-proposal/1/
+          cp -a proposal2/dist/. published-site/design-proposal/2/
 
           touch published-site/.nojekyll
 
