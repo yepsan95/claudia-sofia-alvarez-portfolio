@@ -19,6 +19,8 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      REPO_NAME: ${{ github.event.repository.name }}
 
     steps:
       - name: Checkout current app branch
@@ -53,19 +55,15 @@ jobs:
 
       - name: Build current app
         working-directory: current
-        run: VITE_BASE="/my-project-name/" pnpm build
+        run: VITE_BASE="/${REPO_NAME}/" pnpm build
 
       - name: Install dependencies for design proposal
         working-directory: proposal
         run: pnpm install --frozen-lockfile
 
-      - name: Generate data for design proposal
-        working-directory: proposal
-        run: pnpm generate:data
-
       - name: Build design proposal
         working-directory: proposal
-        run: VITE_BASE="/my-project-name/design-proposal-1/" pnpm build
+        run: VITE_BASE="/${REPO_NAME}/design-proposal-1/" pnpm build
 
       - name: Combine both builds into one Pages site
         run: |
