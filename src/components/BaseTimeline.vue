@@ -27,56 +27,68 @@
       class="overflow-y-auto transition-[margin] duration-300"
       :class="mainContentClass"
     >
-      <div class="mx-auto max-w-6xl px-4 pb-8 pt-20 sm:px-6 lg:px-10">
-        <p class="section-label text-center text-[var(--color-plum)]">
-          Catalogue of Works
-        </p>
-        <p
-          class="mx-auto max-w-4xl py-3 text-center font-display text-[2.7rem] leading-[0.95] text-[var(--text-primary-light)] sm:text-[4rem]"
+      <div class="mx-auto max-w-[84rem] px-4 pb-8 pt-20 sm:px-6 lg:px-10">
+        <div
+          class="grid gap-8 border-b border-[rgba(94,90,85,0.14)] pb-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(18rem,0.65fr)]"
         >
-          {{ props.title }}
-        </p>
-        <p
-          class="mx-auto max-w-3xl py-2 text-center text-base leading-8 text-[var(--text-secondary-light)] sm:text-lg sm:leading-9"
-        >
-          {{ props.subtitle }}
-        </p>
+          <div>
+            <p class="section-label text-[var(--color-plum)]">
+              Catalogue of Works
+            </p>
+            <p
+              class="mt-4 max-w-[12ch] font-display text-[2.85rem] leading-[0.9] text-[var(--text-primary-light)] sm:text-[4.35rem]"
+            >
+              {{ props.title }}
+            </p>
+          </div>
+          <div
+            class="lg:self-end lg:border-l lg:border-[rgba(94,90,85,0.14)] lg:pl-8"
+          >
+            <p
+              class="max-w-[32rem] text-base leading-8 text-[var(--text-secondary-light)] sm:text-[1.05rem]"
+            >
+              {{ props.subtitle }}
+            </p>
+          </div>
+        </div>
       </div>
       <div
         v-if="props.filterOptions.length"
-        class="mx-auto flex max-w-6xl justify-center px-4 pb-6 sm:px-6 lg:px-10"
+        class="mx-auto flex max-w-[84rem] justify-start px-4 pb-8 sm:px-6 lg:px-10"
       >
         <base-filter v-model="selectedFilters" :options="props.filterOptions" />
       </div>
-      <base-accordion
-        class="pb-10"
-        :data="accordionData"
-        :open-collapse-state="openCollapseState"
-        :has-two-levels="false"
-        ref="baseAccordionRef"
-        @update:open-collapse-state="openCollapseState = $event"
-      >
-        <template
-          v-for="year in Object.keys(filteredTimelineData)"
-          :key="year"
-          #[`content[${year}]`]
+      <div class="mx-auto max-w-[84rem] pb-12">
+        <base-accordion
+          class="pb-10"
+          :data="accordionData"
+          :open-collapse-state="openCollapseState"
+          :has-two-levels="false"
+          ref="baseAccordionRef"
+          @update:open-collapse-state="openCollapseState = $event"
         >
-          <base-work
-            v-for="(work, index) in filteredTimelineData[year]"
-            :key="`work-${year}-${index}`"
-            :year="year"
-            :title="work.title"
-            :instrumentation="work.instrumentation"
-            :description="work.description"
-            :premiere-date="work.premiereDate"
-            :premiere-place="work.premierePlace"
-            :publish-date="work.publishDate"
-            :duration="work.duration"
-            :video-url="work.videoUrl"
-            :embedded-video-url="work.embeddedVideoUrl"
-          />
-        </template>
-      </base-accordion>
+          <template
+            v-for="year in Object.keys(filteredTimelineData)"
+            :key="year"
+            #[`content[${year}]`]
+          >
+            <base-work
+              v-for="(work, index) in filteredTimelineData[year]"
+              :key="`work-${year}-${index}`"
+              :year="year"
+              :title="work.title"
+              :instrumentation="work.instrumentation"
+              :description="work.description"
+              :premiere-date="work.premiereDate"
+              :premiere-place="work.premierePlace"
+              :publish-date="work.publishDate"
+              :duration="work.duration"
+              :video-url="work.videoUrl"
+              :embedded-video-url="work.embeddedVideoUrl"
+            />
+          </template>
+        </base-accordion>
+      </div>
     </main>
   </div>
 </template>
@@ -206,8 +218,8 @@ const mainContentClass = computed(() =>
 
 const toggleButtonClass = computed(() =>
   isDesktop.value && isSidebarOpen.value
-    ? "left-[272px] top-[86px]"
-    : "left-4 top-20 md:top-[86px]",
+    ? "left-[280px] top-[94px]"
+    : "left-4 top-20 md:top-[94px]",
 );
 
 const showSidebarBackdrop = computed(

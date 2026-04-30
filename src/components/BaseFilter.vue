@@ -1,11 +1,11 @@
 <template>
-  <div class="flex flex-wrap items-center justify-center gap-3">
+  <div class="flex flex-wrap items-center gap-3">
     <button
       v-for="option in props.options"
       :key="option.id"
       type="button"
       :aria-pressed="isSelected(option.id)"
-      class="rounded-full border px-4 py-2 text-sm font-medium tracking-[0.01em] transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[rgba(181,154,92,0.38)] focus:ring-offset-2 focus:ring-offset-[var(--color-paper)]"
+      class="section-label rounded-full border px-4 py-2 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[rgba(181,154,92,0.38)] focus:ring-offset-2 focus:ring-offset-[var(--color-paper)]"
       :class="getPillClasses(option.id)"
       @click="toggleOption(option.id)"
     >
@@ -59,5 +59,5 @@ const toggleOption = (optionId: string) => {
 const getPillClasses = (optionId: string) =>
   isSelected(optionId)
     ? "border-[rgba(110,89,109,0.72)] bg-[var(--color-plum)] text-[var(--text-primary-dark)] shadow-[0_10px_25px_rgba(110,89,109,0.16)]"
-    : "border-[var(--border-soft)] bg-[rgba(244,240,232,0.88)] text-[var(--text-secondary-light)] hover:border-[rgba(181,154,92,0.6)] hover:text-[var(--text-primary-light)]";
+    : "border-[var(--border-soft)] bg-[rgba(244,240,232,0.78)] text-[var(--text-secondary-light)] hover:border-[rgba(181,154,92,0.58)] hover:text-[var(--text-primary-light)]";
 </script>

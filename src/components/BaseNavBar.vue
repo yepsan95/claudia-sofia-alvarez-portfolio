@@ -1,14 +1,17 @@
 <template>
   <nav
-    class="fixed left-0 top-0 z-50 w-full border-b border-[rgba(201,192,181,0.12)] bg-[rgba(22,24,29,0.92)] text-[var(--text-primary-dark)] backdrop-blur-md"
+    class="fixed left-0 top-0 z-50 w-full border-b border-[rgba(201,192,181,0.12)] bg-[rgba(20,23,30,0.9)] text-[var(--text-primary-dark)] backdrop-blur-xl"
   >
     <div
-      class="mx-auto flex min-h-16 w-full max-w-[90rem] items-center justify-between gap-4 px-4 py-3 md:min-h-[70px] md:px-6 xl:px-10"
+      class="mx-auto flex min-h-16 w-full max-w-[96rem] items-center justify-between gap-4 px-4 py-3 md:min-h-[74px] md:px-6 xl:px-10"
     >
-      <div class="flex min-w-0 items-center">
+      <div class="flex min-w-0 items-center gap-4">
+        <span
+          class="hidden h-10 w-px bg-[linear-gradient(180deg,rgba(181,154,92,0.15),rgba(181,154,92,0.85),rgba(181,154,92,0.15))] lg:block"
+        />
         <router-link
           to="/"
-          class="font-display text-[2rem] leading-none tracking-[0.02em] text-[var(--text-primary-dark)] transition-colors duration-300 hover:text-[var(--color-gold)] md:text-[2.6rem]"
+          class="min-w-0 whitespace-nowrap font-display text-[clamp(1.4rem,7vw,2rem)] leading-none tracking-[0.01em] text-[var(--text-primary-dark)] transition-colors duration-300 hover:text-[var(--color-gold)] md:text-[2.65rem]"
           @click="isMenuOpen = false"
         >
           {{ props.title }}
@@ -25,11 +28,11 @@
       </button>
       <div
         id="site-nav-links"
-        class="absolute left-0 top-full w-full border-t border-[rgba(201,192,181,0.12)] bg-[rgba(22,24,29,0.97)] px-4 py-4 lg:static lg:w-auto lg:border-t-0 lg:bg-transparent lg:p-0"
+        class="absolute left-0 top-full w-full border-t border-[rgba(201,192,181,0.12)] bg-[rgba(20,23,30,0.97)] px-4 py-4 lg:static lg:w-auto lg:border-t-0 lg:bg-transparent lg:p-0"
         :class="isMenuOpen ? 'block' : 'hidden lg:block'"
       >
         <div
-          class="flex flex-col gap-1 lg:flex-row lg:flex-wrap lg:items-center lg:justify-end lg:gap-2"
+          class="flex flex-col gap-1 lg:flex-row lg:flex-wrap lg:items-center lg:justify-end lg:gap-1"
         >
           <router-link
             v-for="option in props.options"
@@ -40,11 +43,11 @@
           >
             <a
               :href="href"
-              class="section-label relative inline-flex rounded-sm px-3 py-2 text-[var(--text-secondary-dark)] transition-colors duration-300 hover:text-[var(--text-primary-dark)] lg:px-2 lg:py-3 xl:px-3"
+              class="section-label relative inline-flex rounded-sm px-3 py-2 text-[var(--text-secondary-dark)] transition-colors duration-300 hover:text-[var(--text-primary-dark)] lg:px-3 lg:py-3"
               :class="
                 isActive
-                  ? 'text-[var(--text-primary-dark)] after:absolute after:bottom-[0.35rem] after:left-3 after:right-3 after:h-px after:bg-[var(--color-gold)] lg:after:left-2 lg:after:right-2 xl:after:left-3 xl:after:right-3'
-                  : 'after:absolute after:bottom-[0.35rem] after:left-3 after:right-3 after:h-px after:origin-center after:scale-x-0 after:bg-[var(--color-gold)] after:transition-transform after:duration-300 hover:after:scale-x-100 lg:after:left-2 lg:after:right-2 xl:after:left-3 xl:after:right-3'
+                  ? 'text-[var(--text-primary-dark)] before:absolute before:left-0 before:top-1/2 before:hidden before:h-px before:w-2 before:-translate-y-1/2 before:bg-[var(--color-gold)] lg:before:block after:absolute after:bottom-[0.35rem] after:left-3 after:right-3 after:h-px after:bg-[var(--color-gold)]'
+                  : 'after:absolute after:bottom-[0.35rem] after:left-3 after:right-3 after:h-px after:origin-center after:scale-x-0 after:bg-[var(--color-gold)] after:transition-transform after:duration-300 hover:after:scale-x-100'
               "
               @click="
                 navigate();
