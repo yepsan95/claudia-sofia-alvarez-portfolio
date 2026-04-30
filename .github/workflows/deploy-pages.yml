@@ -6,7 +6,6 @@ on:
       - master
       - design-proposal-1
       - design-proposal-2
-      - design-proposal-3
   workflow_dispatch:
 
 permissions:
@@ -42,12 +41,6 @@ jobs:
         with:
           ref: design-proposal-2
           path: proposal2
-
-      - name: Checkout design proposal 3 branch
-        uses: actions/checkout@v6
-        with:
-          ref: design-proposal-3
-          path: proposal3
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v6
@@ -95,29 +88,15 @@ jobs:
         working-directory: proposal2
         run: VITE_BASE="/${REPO_NAME}/design-proposal/2" pnpm build
 
-      - name: Install dependencies for design proposal 3
-        working-directory: proposal3
-        run: pnpm install --frozen-lockfile
-
-      - name: Generate data for design proposal 3
-        working-directory: proposal3
-        run: pnpm generate:data
-
-      - name: Build design proposal 3
-        working-directory: proposal3
-        run: VITE_BASE="/${REPO_NAME}/design-proposal/3" pnpm build
-
       - name: Combine all builds into one Pages site
         run: |
           mkdir -p published-site/design-proposal
           mkdir -p published-site/design-proposal/1
           mkdir -p published-site/design-proposal/2
-          mkdir -p published-site/design-proposal/3
 
           cp -a current/dist/. published-site/
           cp -a proposal1/dist/. published-site/design-proposal/1/
           cp -a proposal2/dist/. published-site/design-proposal/2/
-          cp -a proposal3/dist/. published-site/design-proposal/3/
 
           touch published-site/.nojekyll
 
