@@ -1,5 +1,6 @@
 import * as XLSX from "xlsx";
 import fs from "fs";
+import path from "path";
 import generateWorksByYearData from "./generateWorksByYearData.js";
 
 const SPREADSHEET_ID = "1uH2Xx2KBLWT2f7Jlp5b0dzSGV7_AV1d1";
@@ -39,6 +40,7 @@ const parseExcelToJson = async (buffer) => {
 
 const writeJsonFile = (json, filePath) => {
   console.log("�� Writing JSON file...");
+  fs.mkdirSync(path.dirname(filePath), { recursive: true });
   fs.writeFileSync(filePath, JSON.stringify(json, null, 2));
 };
 
