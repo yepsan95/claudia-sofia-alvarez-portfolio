@@ -42,10 +42,6 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: 22
-          cache: pnpm
-          cache-dependency-path: |
-            current/pnpm-lock.yaml
-            proposal/pnpm-lock.yaml
 
       - name: Install dependencies for current app
         working-directory: current
