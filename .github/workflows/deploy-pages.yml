@@ -61,6 +61,10 @@ jobs:
         working-directory: proposal
         run: pnpm install --frozen-lockfile
 
+      - name: Generate data for design proposal
+        working-directory: proposal
+        run: pnpm generate:data
+
       - name: Build design proposal
         working-directory: proposal
         run: VITE_BASE="/${REPO_NAME}/design-proposal-1/" pnpm build
