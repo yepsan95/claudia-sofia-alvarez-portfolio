@@ -1,8 +1,8 @@
 <template>
-  <Disclosure as="div" class="mx-auto w-full bg-transparent py-3">
+  <Disclosure as="div" class="mx-auto w-full bg-transparent py-2">
     <DisclosureButton
       @click="toggleOpen"
-      class="score-rule relative flex w-full items-center justify-center px-4 py-3 text-center focus:outline-none"
+      class="score-rule relative flex w-full items-center justify-start px-4 py-3 text-left focus:outline-none sm:px-6 lg:px-8"
     >
       <slot name="title">
         <span
@@ -23,7 +23,7 @@
       @after-leave="afterLeave"
     >
       <DisclosurePanel v-if="localOpen" static>
-        <div class="w-full text-center center-slot">
+        <div class="w-full center-slot">
           <slot>
             <div
               class="inline-block text-sm text-[var(--text-secondary-light)]"

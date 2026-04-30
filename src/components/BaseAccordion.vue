@@ -1,5 +1,5 @@
 <template>
-  <div class="space-y-3">
+  <div class="space-y-5">
     <base-collapse
       v-for="(element, dataKey) in props.data"
       :key="dataKey"
@@ -8,7 +8,7 @@
           setCollapseRef(element.id, el as InstanceType<typeof BaseCollapse>)
       "
       :title="element.title"
-      title-class="flex items-center justify-center"
+      title-class="flex items-center justify-start"
       :is-open="props.openCollapseState[element.title]"
       @update:is-open="(value) => handleCollapseToggle(element.title, value)"
     >
