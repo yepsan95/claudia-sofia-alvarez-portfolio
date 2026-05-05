@@ -68,7 +68,7 @@
           @update:open-collapse-state="openCollapseState = $event"
         >
           <template
-            v-for="year in Object.keys(filteredTimelineData)"
+            v-for="year in sortedYears"
             :key="year"
             #[`content[${year}]`]
           >
@@ -198,15 +198,21 @@ const filteredTimelineData = computed<TimelineData>(() =>
   ),
 );
 
+const sortedYears = computed(() =>
+  Object.keys(filteredTimelineData.value).sort(
+    (yearA, yearB) => Number(yearB) - Number(yearA),
+  ),
+);
+
 const sidebarOptions = computed<{ label: string; id: string }[]>(() =>
-  Object.keys(filteredTimelineData.value).map((value) => ({
+  sortedYears.value.map((value) => ({
     label: value,
     id: value,
   })),
 );
 
 const accordionData = computed(() =>
-  Object.keys(filteredTimelineData.value).map((year) => ({
+  sortedYears.value.map((year) => ({
     title: year,
     id: year,
   })),
