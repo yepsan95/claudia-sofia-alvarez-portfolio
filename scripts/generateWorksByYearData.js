@@ -1,4 +1,5 @@
 const generateWorksByYearData = (data) => {
+  data.sort((workA, workB) => workB.year - workA.year);
   const worksByYear = {};
   data.forEach((work) => {
     if (work.year) {
