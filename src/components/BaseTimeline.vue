@@ -59,12 +59,13 @@
       >
         <base-filter v-model="selectedFilters" :options="props.filterOptions" />
       </div>
-      <div class="mx-auto max-w-[84rem] pb-12">
+      <div class="mx-auto max-w-[84rem] px-4 pb-12 sm:px-5 lg:px-10 2xl:px-0">
         <base-accordion
           class="pb-10"
           :data="accordionData"
           :open-collapse-state="openCollapseState"
           :has-two-levels="false"
+          :show-timeline-markers="true"
           ref="baseAccordionRef"
           @update:open-collapse-state="openCollapseState = $event"
         >
