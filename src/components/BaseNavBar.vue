@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="fixed left-0 top-0 z-50 w-full border-b border-[rgba(201,192,181,0.12)] bg-[rgba(20,23,30,0.9)] text-[var(--text-primary-dark)] backdrop-blur-xl"
+    class="fixed left-0 top-0 z-50 w-full border-b border-[rgba(201,192,181,0.12)] bg-[linear-gradient(180deg,rgba(39,49,66,0.95),rgba(36,29,39,0.95))] text-[var(--text-primary-dark)] backdrop-blur-xl"
   >
     <div
       class="mx-auto flex min-h-16 w-full max-w-[96rem] items-center justify-between gap-4 px-4 py-3 md:min-h-[74px] md:px-6 xl:px-10"
@@ -19,7 +19,7 @@
       </div>
       <button
         type="button"
-        class="section-label inline-flex items-center rounded-sm border border-[rgba(201,192,181,0.22)] px-3 py-2 text-[var(--text-primary-dark)] transition-colors duration-300 hover:border-[rgba(181,154,92,0.72)] hover:text-[var(--color-gold)] focus:outline-none focus:ring-2 focus:ring-[rgba(181,154,92,0.35)] lg:hidden"
+        class="section-label inline-flex items-center rounded-sm border border-[rgba(201,192,181,0.22)] px-3 py-2 text-[var(--text-primary-dark)] transition-colors duration-300 hover:border-[rgba(106,48,64,0.72)] hover:text-[var(--color-gold)] focus:outline-none focus:ring-2 focus:ring-[rgba(106,48,64,0.32)] lg:hidden"
         :aria-expanded="isMenuOpen"
         aria-controls="site-nav-links"
         @click="toggleMenu"
@@ -28,7 +28,7 @@
       </button>
       <div
         id="site-nav-links"
-        class="absolute left-0 top-full w-full border-t border-[rgba(201,192,181,0.12)] bg-[rgba(20,23,30,0.97)] px-4 py-4 lg:static lg:w-auto lg:border-t-0 lg:bg-transparent lg:p-0"
+        class="absolute left-0 top-full w-full border-t border-[rgba(201,192,181,0.12)] bg-[linear-gradient(180deg,rgba(39,49,66,0.98),rgba(36,29,39,0.98))] px-4 py-4 lg:static lg:w-auto lg:border-t-0 lg:bg-transparent lg:p-0"
         :class="isMenuOpen ? 'block' : 'hidden lg:block'"
       >
         <div

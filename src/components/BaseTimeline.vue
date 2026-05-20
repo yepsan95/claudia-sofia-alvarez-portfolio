@@ -32,7 +32,7 @@
           class="grid gap-8 border-b border-[rgba(94,90,85,0.14)] pb-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(18rem,0.65fr)]"
         >
           <div>
-            <p class="section-label text-[var(--color-plum)]">
+            <p class="section-label text-[var(--color-wine)]">
               Catalogue of Works
             </p>
             <p

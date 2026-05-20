@@ -2,7 +2,7 @@
   <div class="surface-ink min-h-screen pt-16 md:pt-[70px]">
     <section class="relative overflow-hidden">
       <div
-        class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_12%_18%,rgba(110,89,109,0.24),transparent_24%),radial-gradient(circle_at_88%_12%,rgba(181,154,92,0.12),transparent_22%)]"
+        class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_12%_18%,rgba(106,48,64,0.32),transparent_24%),radial-gradient(circle_at_88%_12%,rgba(109,127,149,0.18),transparent_22%),radial-gradient(circle_at_72%_72%,rgba(93,114,102,0.1),transparent_18%)]"
       />
       <div
         class="mx-auto grid min-h-[calc(100vh-70px)] max-w-[96rem] items-center gap-8 px-4 py-8 sm:px-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(19rem,0.68fr)] lg:px-10 xl:gap-12"
@@ -40,7 +40,7 @@
         </div>
         <div class="relative z-10 self-center lg:-ml-20 xl:-ml-28">
           <div class="panel-paper px-6 py-8 sm:px-8 sm:py-10 lg:px-10">
-            <p class="section-label text-[var(--color-plum)]">Composer</p>
+            <p class="section-label text-[var(--color-wine)]">Composer</p>
             <h1
               class="mt-3 max-w-[14ch] font-display text-[2.6rem] leading-[0.92] text-[var(--text-primary-light)] sm:text-[3.3rem] lg:text-[4.3rem]"
             >
@@ -62,17 +62,17 @@
       </div>
     </section>
     <section
-      class="relative overflow-hidden border-t border-[rgba(201,192,181,0.1)] bg-[rgba(16,19,25,0.92)]"
+      class="relative overflow-hidden border-t border-[rgba(201,192,181,0.1)] bg-[linear-gradient(180deg,rgba(26,28,34,0.96),rgba(34,27,35,0.96))]"
     >
       <div
-        class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_14%,rgba(166,124,122,0.1),transparent_24%),radial-gradient(circle_at_82%_16%,rgba(181,154,92,0.08),transparent_22%)]"
+        class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_14%,rgba(138,83,98,0.18),transparent_24%),radial-gradient(circle_at_82%_16%,rgba(93,114,102,0.14),transparent_22%),radial-gradient(circle_at_60%_70%,rgba(109,127,149,0.1),transparent_20%)]"
       />
       <div class="relative mx-auto max-w-[96rem] px-4 py-12 sm:px-6 lg:px-10">
         <div
           class="grid gap-10 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-12"
         >
           <div>
-            <p class="section-label text-[var(--color-gold)]">
+            <p class="section-label text-[var(--color-cypress)]">
               Composer · Lima
             </p>
             <div class="mt-5 score-rule w-full max-w-[16rem]">
@@ -98,7 +98,7 @@
           >
             <div class="grid gap-4 sm:grid-cols-2">
               <div class="panel-ink px-5 py-5">
-                <p class="section-label text-[var(--color-gold)]">
+                <p class="section-label text-[var(--color-cypress)]">
                   Current Focus
                 </p>
                 <p
@@ -109,10 +109,10 @@
                 </p>
               </div>
               <div class="border border-[rgba(201,192,181,0.14)] px-5 py-5">
-                <p class="section-label text-[var(--color-gold)]">Contact</p>
+                <p class="section-label text-[var(--color-wine)]">Contact</p>
                 <a
                   href="mailto:info@claudiasofialvarez.com"
-                  class="mt-3 inline-block text-sm text-[var(--text-primary-dark)] underline decoration-[rgba(181,154,92,0.4)] underline-offset-4 transition-colors duration-300 hover:text-[var(--color-gold)]"
+                  class="mt-3 inline-block text-sm text-[var(--text-primary-dark)] underline decoration-[rgba(138,83,98,0.52)] underline-offset-4 transition-colors duration-300 hover:text-[var(--color-gold)]"
                 >
                   info@claudiasofialvarez.com
                 </a>
@@ -135,7 +135,9 @@
         </div>
       </div>
     </section>
-    <section class="bg-[rgba(16,19,25,0.92)]">
+    <section
+      class="bg-[linear-gradient(180deg,rgba(28,29,35,0.98),rgba(24,20,28,0.98))]"
+    >
       <div
         class="mx-auto grid max-w-[96rem] gap-8 px-4 py-10 sm:px-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:px-10"
       >
