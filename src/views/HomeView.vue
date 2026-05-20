@@ -42,20 +42,18 @@
         </div>
       </div>
     </section>
-    <section
-      class="border-t border-[rgba(201,192,181,0.1)] bg-[rgba(22,24,29,0.78)]"
-    >
+    <section class="bg-[rgba(16,19,25,0.92)]">
       <div
-        class="mx-auto grid max-w-[90rem] gap-8 px-4 py-10 sm:px-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16 lg:px-10"
+        class="mx-auto grid max-w-[96rem] gap-8 px-4 py-10 sm:px-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:px-10"
       >
-        <div class="space-y-8">
-          <div>
+        <div class="grid gap-6 sm:grid-cols-3">
+          <div class="sm:col-span-2">
             <p class="section-label text-[var(--color-gold)]">Join The List</p>
-            <div class="mt-3 flex max-w-sm flex-col gap-3 sm:flex-row">
+            <div class="mt-4 flex max-w-xl flex-col gap-3 sm:flex-row">
               <input
                 type="email"
                 placeholder="Email address"
-                class="min-w-0 flex-1 border border-[rgba(201,192,181,0.18)] bg-[rgba(243,238,230,0.06)] px-4 py-3 text-sm text-[var(--text-primary-dark)] placeholder:text-[var(--text-secondary-dark)] focus:border-[rgba(181,154,92,0.64)] focus:outline-none"
+                class="min-w-0 flex-1 border border-[rgba(201,192,181,0.18)] bg-[rgba(243,238,230,0.05)] px-4 py-3 text-sm text-[var(--text-primary-dark)] placeholder:text-[var(--text-secondary-dark)] focus:border-[rgba(181,154,92,0.64)] focus:outline-none"
               />
               <button
                 type="button"
@@ -66,7 +64,7 @@
             </div>
           </div>
           <div>
-            <p class="section-label text-[var(--color-gold)]">Social Media</p>
+            <p class="section-label text-[var(--color-gold)]">Social</p>
             <ul class="mt-4 flex gap-4">
               <li>
                 <a
@@ -75,7 +73,7 @@
                   rel="noopener noreferrer"
                   class="inline-flex rounded-full border border-[rgba(201,192,181,0.18)] p-3 text-[var(--text-primary-dark)] transition-colors duration-300 hover:border-[rgba(181,154,92,0.6)] hover:text-[var(--color-gold)]"
                 >
-                  <facebook-icon class="size-6" />
+                  <facebook-icon class="size-5" />
                 </a>
               </li>
               <li>
@@ -85,7 +83,7 @@
                   rel="noopener noreferrer"
                   class="inline-flex rounded-full border border-[rgba(201,192,181,0.18)] p-3 text-[var(--text-primary-dark)] transition-colors duration-300 hover:border-[rgba(181,154,92,0.6)] hover:text-[var(--color-gold)]"
                 >
-                  <instagram-icon class="size-6" />
+                  <instagram-icon class="size-5" />
                 </a>
               </li>
               <li>
@@ -95,49 +93,51 @@
                   rel="noopener noreferrer"
                   class="inline-flex rounded-full border border-[rgba(201,192,181,0.18)] p-3 text-[var(--text-primary-dark)] transition-colors duration-300 hover:border-[rgba(181,154,92,0.6)] hover:text-[var(--color-gold)]"
                 >
-                  <youtube-icon class="size-6" />
+                  <youtube-icon class="size-5" />
                 </a>
               </li>
             </ul>
           </div>
+        </div>
+        <div
+          class="grid gap-5 border-t border-[rgba(201,192,181,0.1)] pt-6 lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0"
+        >
+          <div class="grid gap-5 sm:grid-cols-3">
+            <div>
+              <p class="section-label text-[var(--color-gold)]">
+                General Inquiries
+              </p>
+              <a
+                href="mailto:info@claudiasofialvarez.com"
+                class="mt-3 block text-sm text-[var(--text-primary-dark)] underline decoration-[rgba(181,154,92,0.48)] underline-offset-4 transition-colors duration-300 hover:text-[var(--color-gold)]"
+              >
+                info@claudiasofialvarez.com
+              </a>
+            </div>
+            <div>
+              <p class="section-label text-[var(--color-gold)]">
+                Press Inquiries
+              </p>
+              <a
+                href="mailto:press@claudiasofialvarez.com"
+                class="mt-3 block text-sm text-[var(--text-primary-dark)] underline decoration-[rgba(181,154,92,0.48)] underline-offset-4 transition-colors duration-300 hover:text-[var(--color-gold)]"
+              >
+                press@claudiasofialvarez.com
+              </a>
+            </div>
+            <div>
+              <p class="section-label text-[var(--color-gold)]">Publisher</p>
+              <a
+                href="mailto:rental@claudiasofialvarez.com"
+                class="mt-3 block text-sm text-[var(--text-primary-dark)] underline decoration-[rgba(181,154,92,0.48)] underline-offset-4 transition-colors duration-300 hover:text-[var(--color-gold)]"
+              >
+                rental@claudiasofialvarez.com
+              </a>
+            </div>
+          </div>
           <p class="section-label text-[var(--text-secondary-dark)]">
             © 2026 Claudia Sofía Alvarez. All rights reserved.
           </p>
-        </div>
-        <div
-          class="grid gap-6 border-t border-[rgba(201,192,181,0.1)] pt-8 md:border-l md:border-t-0 md:pl-10 md:pt-0"
-        >
-          <div>
-            <p class="section-label text-[var(--color-gold)]">
-              General Inquiries
-            </p>
-            <a
-              href="mailto:info@claudiasofialvarez.com"
-              class="mt-2 block text-[var(--text-primary-dark)] underline decoration-[rgba(181,154,92,0.55)] underline-offset-4 transition-colors duration-300 hover:text-[var(--color-gold)]"
-            >
-              info@claudiasofialvarez.com
-            </a>
-          </div>
-          <div>
-            <p class="section-label text-[var(--color-gold)]">
-              Press Inquiries
-            </p>
-            <a
-              href="mailto:press@claudiasofialvarez.com"
-              class="mt-2 block text-[var(--text-primary-dark)] underline decoration-[rgba(181,154,92,0.55)] underline-offset-4 transition-colors duration-300 hover:text-[var(--color-gold)]"
-            >
-              press@claudiasofialvarez.com
-            </a>
-          </div>
-          <div>
-            <p class="section-label text-[var(--color-gold)]">Publisher</p>
-            <a
-              href="mailto:rental@claudiasofialvarez.com"
-              class="mt-2 block text-[var(--text-primary-dark)] underline decoration-[rgba(181,154,92,0.55)] underline-offset-4 transition-colors duration-300 hover:text-[var(--color-gold)]"
-            >
-              rental@claudiasofialvarez.com
-            </a>
-          </div>
         </div>
       </div>
     </section>
