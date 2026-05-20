@@ -18,6 +18,25 @@
           <div
             class="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(0,0,0,0.72)_0%,rgba(0,0,0,0.16)_32%,rgba(0,0,0,0.52)_100%)]"
           />
+          <div
+            class="absolute bottom-0 left-0 right-0 grid gap-4 border-t border-[rgba(201,192,181,0.12)] bg-[linear-gradient(180deg,rgba(17,20,26,0),rgba(17,20,26,0.82)_24%,rgba(17,20,26,0.94)_100%)] px-5 py-5 sm:grid-cols-[minmax(0,1fr)_auto] sm:px-7"
+          >
+            <div>
+              <p class="section-label text-[var(--color-gold)]">Monograph</p>
+              <p
+                class="mt-2 max-w-[26rem] text-sm leading-7 text-[var(--text-secondary-dark)]"
+              >
+                Proposal 2 shifts the emphasis from a floating card to a
+                full-page editorial spread with a looser, more architectural
+                rhythm.
+              </p>
+            </div>
+            <div class="self-end">
+              <p class="section-label text-[var(--text-secondary-dark)]">
+                Portrait Study · 2026
+              </p>
+            </div>
+          </div>
         </div>
         <div class="relative z-10 self-center lg:-ml-20 xl:-ml-28">
           <div class="panel-paper px-6 py-8 sm:px-8 sm:py-10 lg:px-10">
