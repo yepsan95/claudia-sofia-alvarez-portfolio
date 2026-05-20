@@ -61,6 +61,80 @@
         </div>
       </div>
     </section>
+    <section
+      class="relative overflow-hidden border-t border-[rgba(201,192,181,0.1)] bg-[rgba(16,19,25,0.92)]"
+    >
+      <div
+        class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_14%,rgba(166,124,122,0.1),transparent_24%),radial-gradient(circle_at_82%_16%,rgba(181,154,92,0.08),transparent_22%)]"
+      />
+      <div class="relative mx-auto max-w-[96rem] px-4 py-12 sm:px-6 lg:px-10">
+        <div
+          class="grid gap-10 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-12"
+        >
+          <div>
+            <p class="section-label text-[var(--color-gold)]">
+              Composer · Lima
+            </p>
+            <div class="mt-5 score-rule w-full max-w-[16rem]">
+              <span class="relative block h-px" />
+            </div>
+            <div
+              class="mt-8 grid gap-6 border-t border-[rgba(201,192,181,0.12)] pt-7 lg:grid-cols-[auto_minmax(0,1fr)]"
+            >
+              <p class="section-label pt-1 text-[var(--text-secondary-dark)]">
+                Proposal 02
+              </p>
+              <p
+                class="max-w-[34rem] text-[1.02rem] leading-8 text-[var(--text-secondary-dark)] sm:text-[1.08rem]"
+              >
+                A contemporary classical composer platform conceived as an
+                editorial folio: intimate, restrained, and precise, with the
+                atmosphere of a concert program and the structure of an archive.
+              </p>
+            </div>
+          </div>
+          <div
+            class="grid gap-6 border-t border-[rgba(201,192,181,0.12)] pt-7 lg:border-t-0 lg:pt-[4.35rem]"
+          >
+            <div class="grid gap-4 sm:grid-cols-2">
+              <div class="panel-ink px-5 py-5">
+                <p class="section-label text-[var(--color-gold)]">
+                  Current Focus
+                </p>
+                <p
+                  class="mt-3 text-sm leading-7 text-[var(--text-secondary-dark)]"
+                >
+                  Vocal, chamber, and interdisciplinary works presented with a
+                  quieter monographic cadence.
+                </p>
+              </div>
+              <div class="border border-[rgba(201,192,181,0.14)] px-5 py-5">
+                <p class="section-label text-[var(--color-gold)]">Contact</p>
+                <a
+                  href="mailto:info@claudiasofialvarez.com"
+                  class="mt-3 inline-block text-sm text-[var(--text-primary-dark)] underline decoration-[rgba(181,154,92,0.4)] underline-offset-4 transition-colors duration-300 hover:text-[var(--color-gold)]"
+                >
+                  info@claudiasofialvarez.com
+                </a>
+              </div>
+            </div>
+            <div
+              class="flex flex-wrap items-center gap-4 border-t border-[rgba(201,192,181,0.12)] pt-6"
+            >
+              <router-link
+                to="/works"
+                class="button-primary inline-flex rounded-sm px-5 py-3 text-sm"
+              >
+                View Catalogue
+              </router-link>
+              <p class="section-label text-[var(--text-secondary-dark)]">
+                Contemporary score studies · performances · archive
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
     <section class="bg-[rgba(16,19,25,0.92)]">
       <div
         class="mx-auto grid max-w-[96rem] gap-8 px-4 py-10 sm:px-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:px-10"
@@ -164,6 +238,7 @@
 </template>
 
 <script setup lang="ts">
+import { RouterLink } from "vue-router";
 import facebookIcon from "../assets/facebook.svg";
 import InstagramIcon from "../assets/instagram.svg";
 import youtubeIcon from "../assets/youtube.svg";
