@@ -1,7 +1,7 @@
 <template>
   <aside
     id="timeline-sidebar"
-    class="fixed left-0 z-20 h-[calc(100vh-4rem)] w-[min(18.5rem,85vw)] overflow-y-auto border-r border-[rgba(201,192,181,0.08)] bg-[linear-gradient(180deg,#202735_0%,#171c24_100%)] text-[var(--text-primary-dark)] transition-transform duration-300 md:top-[74px] md:h-[calc(100vh-74px)] lg:w-[17rem]"
+    class="fixed left-0 z-20 h-[calc(100vh-4rem)] w-[min(18.5rem,85vw)] overflow-y-auto border-r border-[rgba(201,192,181,0.08)] bg-[linear-gradient(180deg,#2a3446_0%,#231d29_72%,#18181d_100%)] text-[var(--text-primary-dark)] transition-transform duration-300 md:top-[74px] md:h-[calc(100vh-74px)] lg:w-[17rem]"
     :class="sidebarStateClass"
   >
     <div class="border-b border-[rgba(201,192,181,0.1)] px-5 py-6">
@@ -23,7 +23,7 @@
         @click="handleOptionClick(option.id)"
       >
         <span
-          class="h-px w-4 bg-[rgba(201,192,181,0.18)] transition-all duration-300 group-hover:w-8 group-hover:bg-[var(--color-gold)]"
+          class="h-px w-4 bg-[rgba(201,192,181,0.18)] transition-all duration-300 group-hover:w-8 group-hover:bg-[var(--color-wine)]"
         />
         <span class="group-hover:text-[var(--color-gold)]">{{
           option.label

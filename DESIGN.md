@@ -44,7 +44,7 @@ Fallbacks:
 
 ## Color System
 
-Use warm neutrals and muted accents.
+Use warm neutrals with restrained, monographic accents: gold, dark wine, muted botanicals, and cool slate undertones.
 
 ```css
 :root {
@@ -57,9 +57,13 @@ Use warm neutrals and muted accents.
   --color-mist: #d8d1c6;
 
   --color-gold: #b59a5c;
+  --color-wine: #5b2f38;
+  --color-bordeaux: #7a4652;
   --color-plum: #6e596d;
   --color-rose-clay: #a67c7a;
+  --color-cypress: #56625a;
   --color-sage-smoke: #7e8a7a;
+  --color-slate-blue: #5e6a78;
 
   --text-primary-dark: #f3eee6;
   --text-secondary-dark: #c9c0b5;
@@ -81,8 +85,15 @@ Use warm neutrals and muted accents.
 - Main panel background: `--color-paper`
 - Dark UI areas: `--color-midnight`
 - Borders/dividers: `--border-soft`
-- Main accent: `--color-gold`
+- Main warm accent: `--color-gold`
+- Main deep accent: `--color-wine`
 - Secondary accent: `--color-plum`
+- Supporting organic accent: `--color-cypress`
+- Supporting cool accent: `--color-slate-blue`
+
+Usage note:
+- Gold and dark wine should carry the strongest emphasis.
+- Cypress and slate blue should appear sparingly to introduce variation without weakening the identity.
 
 ## Typography Scale
 
@@ -197,6 +208,7 @@ Motion should be slow and quiet.
 - Nav links in sans or mono small caps
 - Hover state: underline or thin bottom rule in gold
 - Active link: slightly brighter text plus gold underline
+- Subtle midnight-to-slate tonal variation is acceptable across large dark surfaces
 
 Recommended feel:
 - no chunky rounded selected pills
@@ -251,7 +263,7 @@ Inactive:
 - border in `--border-soft`
 
 Active:
-- `--color-plum` background
+- `--color-wine` background preferred, with `--color-plum` as a softer alternative
 - light text
 - slight shadow
 
@@ -264,11 +276,13 @@ Primary:
 - dark ink background
 - light text
 - thin gold border on hover
+- dark wine may be used selectively for emphasis or alternate primary moments
 
 Secondary:
 - transparent/paper background
 - dark border
 - dark text
+- hover or selected states can introduce restrained wine accents instead of relying only on gold
 
 Avoid generic gray button styling.
 
@@ -279,6 +293,7 @@ Avoid generic gray button styling.
 - Labels in mono
 - Links understated
 - Can use subtle column dividers or score lines
+- Can use restrained midnight-to-slate tonal variation instead of a single flat dark fill
 
 ## Iconography
 
@@ -294,6 +309,7 @@ Use a few recurring motifs:
 - occasional offset blocks
 - subtle linework
 - asymmetry in layout, symmetry in typography
+- restrained wine, cypress, or slate washes as occasional alternatives to repeated plum usage
 
 Avoid:
 - ornamental flourishes
@@ -349,7 +365,7 @@ h1, h2, h3, .font-display {
 ## Practical Theme Summary
 
 If implemented well, the site should read as:
-- `midnight + paper + gold`
+- `midnight + paper + gold + dark wine`
 - `serif + mono + clean sans`
 - `editorial composition + archival structure`
 - `minimal but not sterile`

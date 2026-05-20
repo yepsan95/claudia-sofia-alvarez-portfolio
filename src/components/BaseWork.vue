@@ -7,14 +7,14 @@
         <div
           class="border-b border-[var(--border-soft)] bg-[rgba(232,225,212,0.44)] px-5 py-5 lg:border-b-0 lg:border-r"
         >
-          <p class="section-label text-[var(--color-plum)]">Year</p>
+          <p class="section-label text-[var(--color-wine)]">Year</p>
           <p
             class="mt-3 font-[var(--font-mono)] text-xl text-[var(--text-primary-light)]"
           >
             {{ year }}
           </p>
           <div v-if="duration" class="mt-6">
-            <p class="section-label text-[var(--color-plum)]">Duration</p>
+            <p class="section-label text-[var(--color-cypress)]">Duration</p>
             <p class="mt-2 text-sm text-[var(--text-secondary-light)]">
               {{ duration }}
             </p>
@@ -27,10 +27,12 @@
             >
               {{ title }}
             </p>
-            <p class="section-label text-[var(--color-plum)]">archival entry</p>
+            <p class="section-label text-[var(--color-slate-blue)]">
+              archival entry
+            </p>
           </div>
           <div class="mt-5 border-t border-[var(--border-soft)] pt-5 text-left">
-            <p class="section-label text-[var(--color-plum)]">
+            <p class="section-label text-[var(--color-wine)]">
               Instrumentation
             </p>
             <p
@@ -49,7 +51,7 @@
             v-if="premierePlace"
             class="mt-5 border-t border-[var(--border-soft)] pt-5 text-left text-[var(--text-secondary-light)]"
           >
-            <p class="section-label text-[var(--color-plum)]">Premiere</p>
+            <p class="section-label text-[var(--color-cypress)]">Premiere</p>
             <p class="mt-2">
               {{ `Premiered at ${premierePlace} on ${formattedPremiereDate}` }}
             </p>
