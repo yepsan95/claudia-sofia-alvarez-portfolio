@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen pt-16 md:pt-[70px]">
+  <div class="surface-paper min-h-screen pt-16 md:pt-[70px]">
     <div
       v-if="showSidebarBackdrop"
       class="fixed inset-0 z-10 bg-slate-950/35 lg:hidden"
@@ -15,7 +15,7 @@
     />
     <button
       type="button"
-      class="fixed z-20 rounded-full border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-800 shadow-sm transition-all duration-300 hover:bg-gray-100"
+      class="button-secondary fixed z-20 rounded-full px-4 py-2 text-sm transition-all duration-300"
       :class="toggleButtonClass"
       :aria-expanded="isSidebarOpen"
       :aria-controls="sidebarId"
@@ -27,51 +27,70 @@
       class="overflow-y-auto transition-[margin] duration-300"
       :class="mainContentClass"
     >
-      <div class="mx-auto max-w-6xl px-4 pb-8 pt-20 sm:px-6 lg:px-10">
-        <p class="py-2 text-center text-3xl leading-tight sm:text-4xl">
-          {{ props.title }}
-        </p>
-        <p
-          class="mx-auto max-w-4xl py-2 text-center text-base leading-8 text-gray-800 sm:text-lg sm:leading-9"
+      <div class="mx-auto max-w-[84rem] px-4 pb-8 pt-20 sm:px-6 lg:px-10">
+        <div
+          class="grid gap-8 border-b border-[rgba(94,90,85,0.14)] pb-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(18rem,0.65fr)]"
         >
-          {{ props.subtitle }}
-        </p>
+          <div>
+            <p class="section-label text-[var(--color-wine)]">
+              Catalogue of Works
+            </p>
+            <p
+              class="mt-4 max-w-[13ch] font-display text-[2.85rem] leading-[0.9] text-[var(--text-primary-light)] sm:text-[4.35rem]"
+            >
+              {{ props.title }}
+            </p>
+          </div>
+          <div
+            v-if="props.subtitle"
+            class="lg:self-end lg:border-l lg:border-[rgba(94,90,85,0.14)] lg:pl-8"
+          >
+            <p
+              class="max-w-[32rem] text-base leading-8 text-[var(--text-secondary-light)] sm:text-[1.05rem]"
+            >
+              {{ props.subtitle }}
+            </p>
+          </div>
+        </div>
       </div>
       <div
         v-if="props.filterOptions.length"
-        class="mx-auto flex max-w-6xl justify-center px-4 pb-6 sm:px-6 lg:px-10"
+        class="mx-auto flex max-w-[84rem] justify-start px-4 pb-8 sm:px-6 lg:px-10"
       >
         <base-filter v-model="selectedFilters" :options="props.filterOptions" />
       </div>
-      <base-accordion
-        class="pb-10"
-        :data="accordionData"
-        :open-collapse-state="openCollapseState"
-        :has-two-levels="false"
-        ref="baseAccordionRef"
-        @update:open-collapse-state="openCollapseState = $event"
-      >
-        <template
-          v-for="year in Object.keys(filteredTimelineData)"
-          :key="year"
-          #[`content[${year}]`]
+      <div class="mx-auto max-w-[84rem] px-4 pb-12 sm:px-5 lg:px-10 2xl:px-0">
+        <base-accordion
+          class="pb-10"
+          :data="accordionData"
+          :open-collapse-state="openCollapseState"
+          :has-two-levels="false"
+          :show-timeline-markers="true"
+          ref="baseAccordionRef"
+          @update:open-collapse-state="openCollapseState = $event"
         >
-          <base-work
-            v-for="(work, index) in filteredTimelineData[year]"
-            :key="`work-${year}-${index}`"
-            :year="year"
-            :title="work.title"
-            :instrumentation="work.instrumentation"
-            :description="work.description"
-            :premiere-date="work.premiereDate"
-            :premiere-place="work.premierePlace"
-            :publish-date="work.publishDate"
-            :duration="work.duration"
-            :video-url="work.videoUrl"
-            :embedded-video-url="work.embeddedVideoUrl"
-          />
-        </template>
-      </base-accordion>
+          <template
+            v-for="year in sortedYears"
+            :key="year"
+            #[`content[${year}]`]
+          >
+            <base-work
+              v-for="(work, index) in filteredTimelineData[year]"
+              :key="`work-${year}-${index}`"
+              :year="year"
+              :title="work.title"
+              :instrumentation="work.instrumentation"
+              :description="work.description"
+              :premiere-date="work.premiereDate"
+              :premiere-place="work.premierePlace"
+              :publish-date="work.publishDate"
+              :duration="work.duration"
+              :video-url="work.videoUrl"
+              :embedded-video-url="work.embeddedVideoUrl"
+            />
+          </template>
+        </base-accordion>
+      </div>
     </main>
   </div>
 </template>
@@ -120,8 +139,6 @@ const props = defineProps({
   subtitle: {
     type: String,
     required: false,
-    default:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
   },
   timelineData: {
     type: Object as PropType<TimelineData>,
@@ -181,15 +198,21 @@ const filteredTimelineData = computed<TimelineData>(() =>
   ),
 );
 
+const sortedYears = computed(() =>
+  Object.keys(filteredTimelineData.value).sort(
+    (yearA, yearB) => Number(yearB) - Number(yearA),
+  ),
+);
+
 const sidebarOptions = computed<{ label: string; id: string }[]>(() =>
-  Object.keys(filteredTimelineData.value).map((value) => ({
+  sortedYears.value.map((value) => ({
     label: value,
     id: value,
   })),
 );
 
 const accordionData = computed(() =>
-  Object.keys(filteredTimelineData.value).map((year) => ({
+  sortedYears.value.map((year) => ({
     title: year,
     id: year,
   })),
@@ -201,8 +224,8 @@ const mainContentClass = computed(() =>
 
 const toggleButtonClass = computed(() =>
   isDesktop.value && isSidebarOpen.value
-    ? "left-[272px] top-[86px]"
-    : "left-4 top-20 md:top-[86px]",
+    ? "left-[280px] top-[94px]"
+    : "left-4 top-20 md:top-[94px]",
 );
 
 const showSidebarBackdrop = computed(

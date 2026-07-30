@@ -13,7 +13,9 @@ const generateData = async () => {
   writeJsonFile(json, "./src/data/data.json");
   console.log("✅ Done! JSON generated successfully.");
   const worksByYear = generateWorksByYearData(json);
-  writeJsonFile(worksByYear, "./src/data/worksByYear.json");
+  writeJsonFile(worksByYear, "./src/data/worksByYear.json", {
+    preserveDescendingYearKeys: true,
+  });
 };
 
 const fetchFromGoogleDrive = async () => {
@@ -38,10 +40,26 @@ const parseExcelToJson = async (buffer) => {
   return json;
 };
 
-const writeJsonFile = (json, filePath) => {
+const writeJsonFile = (json, filePath, options = {}) => {
   console.log("�� Writing JSON file...");
   fs.mkdirSync(path.dirname(filePath), { recursive: true });
-  fs.writeFileSync(filePath, JSON.stringify(json, null, 2));
+  const content = options.preserveDescendingYearKeys
+    ? stringifyObjectWithOrderedKeys(json)
+    : JSON.stringify(json, null, 2);
+  fs.writeFileSync(filePath, content);
+};
+
+const stringifyObjectWithOrderedKeys = (json) => {
+  const orderedEntries = Object.entries(json).sort(
+    ([yearA], [yearB]) => Number(yearB) - Number(yearA),
+  );
+
+  const lines = orderedEntries.map(([year, works]) => {
+    const worksJson = JSON.stringify(works, null, 2).replace(/\n/g, "\n  ");
+    return `  ${JSON.stringify(year)}: ${worksJson}`;
+  });
+
+  return `{\n${lines.join(",\n")}\n}`;
 };
 
 generateData().catch(console.error);

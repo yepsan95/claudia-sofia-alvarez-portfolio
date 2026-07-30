@@ -1,51 +1,98 @@
 <template>
-  <div class="flex justify-center px-4 sm:px-6 lg:px-8">
-    <div class="my-4 w-full max-w-4xl border px-5 py-6 sm:my-5 sm:px-8 sm:py-8">
-      <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 text-left">
-        <p class="text-2xl leading-tight">{{ title }}</p>
-        <p class="italic">{{ `(${year})` }}</p>
-        <p v-if="duration">{{ duration }}</p>
-      </div>
-      <div class="flex justify-start py-1 text-left">
-        <p>{{ `for ${formattedInstrumentation}` }}</p>
-      </div>
-      <div class="flex justify-start py-1 text-left">
-        <p>{{ description }}</p>
-      </div>
-      <div v-if="premierePlace" class="flex justify-start py-1 text-left">
-        <p>{{ `Premiered at ${premierePlace} on ${formattedPremiereDate}` }}</p>
-      </div>
-      <div v-if="embeddedVideoUrl" class="flex justify-center py-5">
-        <iframe
-          :src="embeddedVideoUrl"
-          class="aspect-video w-full max-w-xl"
-          title="Embedded performance video"
-        />
-      </div>
-      <div class="mt-8 flex flex-wrap justify-center gap-3">
-        <a
-          v-if="videoUrl"
-          :href="videoUrl"
-          target="_blank"
-          rel="noopener noreferrer"
+  <div class="px-4 sm:px-6 lg:px-8">
+    <article
+      class="my-5 w-full border border-[var(--border-soft)] bg-[rgba(248,244,237,0.88)] shadow-[var(--shadow-soft)]"
+    >
+      <div class="grid gap-0 lg:grid-cols-[minmax(10rem,12rem)_minmax(0,1fr)]">
+        <div
+          class="border-b border-[var(--border-soft)] bg-[rgba(232,225,212,0.44)] px-5 py-5 lg:border-b-0 lg:border-r"
         >
-          <button
-            type="button"
-            class="border rounded-lg bg-gray-700 hover:bg-gray-500 text-gray-200 px-3 py-2"
+          <p class="section-label text-[var(--color-wine)]">Year</p>
+          <p
+            class="mt-3 font-[var(--font-mono)] text-xl text-[var(--text-primary-light)]"
           >
-            Video
-          </button>
-        </a>
-        <a v-if="scoreUrl" :href="scoreUrl || ''">
-          <button
-            type="button"
-            class="border rounded-lg bg-gray-700 hover:bg-gray-500 text-gray-200 px-3 py-2"
+            {{ year }}
+          </p>
+          <div v-if="duration" class="mt-6">
+            <p class="section-label text-[var(--color-cypress)]">Duration</p>
+            <p class="mt-2 text-sm text-[var(--text-secondary-light)]">
+              {{ duration }}
+            </p>
+          </div>
+        </div>
+        <div class="px-5 py-6 sm:px-8 sm:py-8">
+          <div class="flex flex-wrap items-baseline gap-x-3 gap-y-2 text-left">
+            <p
+              class="font-display text-[2rem] leading-[0.95] text-[var(--text-primary-light)] sm:text-[2.45rem]"
+            >
+              {{ title }}
+            </p>
+            <p class="section-label text-[var(--color-slate-blue)]">
+              archival entry
+            </p>
+          </div>
+          <div class="mt-5 border-t border-[var(--border-soft)] pt-5 text-left">
+            <p class="section-label text-[var(--color-wine)]">
+              Instrumentation
+            </p>
+            <p
+              class="mt-2 text-[1rem] leading-8 text-[var(--text-primary-light)]"
+            >
+              {{ `for ${formattedInstrumentation}` }}
+            </p>
+          </div>
+          <div
+            v-if="description"
+            class="mt-5 text-left text-[var(--text-secondary-light)]"
           >
-            Purchase score
-          </button>
-        </a>
+            <p>{{ description }}</p>
+          </div>
+          <div
+            v-if="premierePlace"
+            class="mt-5 border-t border-[var(--border-soft)] pt-5 text-left text-[var(--text-secondary-light)]"
+          >
+            <p class="section-label text-[var(--color-cypress)]">Premiere</p>
+            <p class="mt-2">
+              {{ `Premiered at ${premierePlace} on ${formattedPremiereDate}` }}
+            </p>
+          </div>
+          <div v-if="embeddedVideoUrl" class="mt-7 flex justify-center">
+            <div
+              class="w-full max-w-2xl border border-[var(--border-soft)] p-2"
+            >
+              <iframe
+                :src="embeddedVideoUrl"
+                class="aspect-video w-full"
+                title="Embedded performance video"
+              />
+            </div>
+          </div>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a
+              v-if="videoUrl"
+              :href="videoUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <button
+                type="button"
+                class="button-primary rounded-sm px-4 py-2 text-sm"
+              >
+                Watch Performance
+              </button>
+            </a>
+            <a v-if="scoreUrl" :href="scoreUrl || ''">
+              <button
+                type="button"
+                class="button-secondary rounded-sm px-4 py-2 text-sm"
+              >
+                Purchase score
+              </button>
+            </a>
+          </div>
+        </div>
       </div>
-    </div>
+    </article>
   </div>
 </template>
 

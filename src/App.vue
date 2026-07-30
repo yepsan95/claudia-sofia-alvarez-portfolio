@@ -1,5 +1,8 @@
 <template>
-  <div id="app">
+  <div
+    id="app"
+    class="min-h-screen bg-[var(--color-ink)] text-[var(--text-primary-dark)]"
+  >
     <base-nav-bar :title="navBarTitle" :options="navBarOptions" />
     <router-view />
   </div>

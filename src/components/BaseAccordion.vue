@@ -1,5 +1,9 @@
 <template>
-  <div class="space-y-2">
+  <div class="relative space-y-5">
+    <div
+      v-if="props.showTimelineMarkers && props.data.length"
+      class="pointer-events-none absolute -bottom-12 top-8 left-0 w-[3px] bg-[rgba(181,154,92,0.3)]"
+    />
     <base-collapse
       v-for="(element, dataKey) in props.data"
       :key="dataKey"
@@ -8,10 +12,22 @@
           setCollapseRef(element.id, el as InstanceType<typeof BaseCollapse>)
       "
       :title="element.title"
-      title-class="flex items-center justify-center"
+      title-class="flex items-center justify-start"
       :is-open="props.openCollapseState[element.title]"
       @update:is-open="(value) => handleCollapseToggle(element.title, value)"
     >
+      <template v-if="props.showTimelineMarkers" #title>
+        <div class="relative flex w-full items-center">
+          <span
+            class="absolute left-[-0.90625rem] top-1/2 z-10 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[rgba(181,154,92,0.72)] bg-[var(--color-gold)] shadow-[0_0_0_3px_rgba(244,240,232,0.92),0_6px_14px_rgba(22,24,29,0.12)] sm:left-[-1.40625rem] lg:left-[-1.90625rem]"
+          />
+          <span
+            class="section-label relative z-10 rounded-full border border-[rgba(181,154,92,0.72)] bg-[var(--color-paper)] px-4 py-2 text-[var(--text-primary-light)] shadow-[0_8px_24px_rgba(22,24,29,0.08)]"
+          >
+            {{ element.title }}
+          </span>
+        </div>
+      </template>
       <slot :name="`content[${element.title}]`">
         <div v-if="hasTwoLevels" class="space-y-1">
           <base-collapse
@@ -54,6 +70,11 @@ const props = defineProps({
     type: Boolean,
     required: false,
     default: true,
+  },
+  showTimelineMarkers: {
+    type: Boolean,
+    required: false,
+    default: false,
   },
   data: {
     type: Array<Collapse>,
